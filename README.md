@@ -1,13 +1,7 @@
 # ADTools
 
-Package: ADTool
-Title: Alzheimer Disease Data Tools
-Version: 1.1
-Authors: Xinyu Guo [aut, cre],
-    Zheyu Wang [aut, cre],
-    Chenguang Wang [aut, cre]
-Maintainer: Chenguang Wang <cwang68@jhmi.edu>
-Description: Sharp increases in Alzheimer disease (AD) cases, deaths, and
+
+Sharp increases in Alzheimer disease (AD) cases, deaths, and
     costs are stressing the health care system and caregivers. Several major AD data
     sources exist which allows researchers to conduct their research. For example,
     the BIOCARD study is a longitudinal, observational study initiated in 1995, and
@@ -21,25 +15,5 @@ Description: Sharp increases in Alzheimer disease (AD) cases, deaths, and
     this package that define the formats and organization structures of the AD data
     across multiple data sources. R Functions are provided for data analysts to
     integrate data from multiple data sources and create their analysis datasets.
-License: GPL (>=3)
-Depends:
-    R (>= 3.5.0)
-Imports:
-    parallel (>= 3.2)
-LinkingTo:
-RcppModules:
-Encoding: UTF-8
-LazyData: true
-NeedsCompilation: yes
-SystemRequirements: GNU make
-RoxygenNote: 7.1.1
-Suggests:
-    knitr,
-    shiny,
-    rmarkdown,
-    pander,
-    xtable
-VignetteBuilder: knitr
-
 
 
