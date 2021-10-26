@@ -1,0 +1,304 @@
+---
+title: "ADNI_scf"
+author: "Xinyu Guo"
+date: "6/10/2021"
+output: html_document
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(skimr)
+library(vistime)
+library(kableExtra)
+library(ggplot2)
+library(plotly)
+library(ggplotify)
+```
+
+## All patients
+```{r}
+loc <- "/Users/xinyuguo/OneDrive - Johns Hopkins/AD Biomarker/AD_Tools/ADTool/ADNI_data/smry"
+key_data <- read.csv(paste0(loc, "/ADNIMERGE.csv"), header = T)
+data_cohort <- key_data %>%
+  select(RID, VISCODE, COLPROT, ORIGPROT, DX_bl, DX, EXAMDATE_bl, EXAMDATE) 
+data_rgstr <- read.csv(paste0(loc, "/REGISTRY.csv")) %>% 
+  mutate(VISCODE = VISCODE2) %>% # use VISCODE2 to unify all viscodes
+  select(Phase, RID, VISCODE, USERDATE, USERDATE2) %>% 
+  arrange(RID)
+data_patients <- data_rgstr %>% 
+  left_join(data_cohort, by = c("RID", "VISCODE"))
+#write.csv(data_patients, "./patients.csv")
+patients_DX_bl <- data_patients %>% 
+                   filter(DX_bl != "" | !is.na(DX_bl)) %>%
+                   group_by(RID) %>% 
+                   filter(row_number() == 1)
+cat("There are entire", 
+    length(unique(data_patients$RID)), "patients and", 
+    nrow(data_patients), "records. \n", 
+    "Among all records,\n", 
+    nrow(data_patients %>% filter(Phase == "ADNI1")), "are from ADNI1; \n", 
+    nrow(data_patients %>% filter(Phase == "ADNIGO")), "are from ADNIGO; \n", 
+    nrow(data_patients %>% filter(Phase == "ADNI2")), "are from ADNI2; \n", 
+    nrow(data_patients %>% filter(Phase == "ADNI3")), "are from ADNI3. \n", 
+    "For",  nrow(data_patients %>% 
+                   filter(DX_bl != "" | !is.na(DX_bl)) %>%
+                   group_by(RID) %>% 
+                   filter(row_number() == 1)), 
+    "patients who have baseline diagnosis, \n",
+    nrow(patients_DX_bl %>% filter(DX_bl == "CN")), "are normal; \n", 
+    nrow(patients_DX_bl %>% filter(DX_bl == "AD")), "have AD; \n", 
+    nrow(patients_DX_bl %>% filter(DX_bl == "LMCI")), "have late mild cognitive impairment (LMCI); \n", 
+    nrow(patients_DX_bl %>% filter(DX_bl == "EMCI")), "have early mild cognitive impairment (EMCI); \n", 
+    nrow(patients_DX_bl %>% filter(DX_bl == "SMC")), "have significant memory concern (SMC).")
+chk_patients <- data_patients %>% 
+  select(Phase, RID, VISCODE, DX, EXAMDATE)
+```
+
+## Get CSF data
+```{r}
+loc <- "/Users/xinyuguo/OneDrive - Johns Hopkins/AD Biomarker/AD_Tools/ADTool/ADNI_data/CSF"
+files <- list.files(loc, pattern = ".csv", full.names = T)
+dicts <- files[grep("dict", files, ignore.case = T)]
+datas <- files[-grep("dict", files, ignore.case = T)]
+list_data <- c()
+for (tbl in datas) {
+  tem_data <- read.csv(tbl, header = T)
+  name_data <- gsub(".csv", "", basename(tbl))
+  assign(name_data, tem_data)
+  list_data <- c(list_data, name_data)
+}
+cat(list_data)
+```
+
+### UPENNBIOMK_MASTER
+There are total 8 batches. Including both baseline and longitudinal data. A "MEDIAN" was calculated for each visit (among different batches). Time: 2008-2015.
+*Perpose:* use the "MEDIAN".
+```{r}
+UPENNBIOMK_MASTER_join <- UPENNBIOMK_MASTER %>% 
+  filter(BATCH == "MEDIAN") %>% 
+  select(RID, VISCODE, DRWDTE, RUNDATE, ABETA, TAU, PTAU)
+chk_UPENNBIOMK_MASTER <- chk_patients %>% 
+  left_join(UPENNBIOMK_MASTER_join, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(DRWDTE))
+mismatch <- UPENNBIOMK_MASTER_join %>% 
+  anti_join(chk_UPENNBIOMK_MASTER, by = c("RID", "VISCODE"))
+head(mismatch)
+table(chk_UPENNBIOMK_MASTER$Phase)
+table(chk_UPENNBIOMK_MASTER$VISCODE)
+```
+
+Only includes ADNI1 and ADNIGO data. 
+
+*Question:* One visit is not in the all patients table.
+
+## UPENNBIOMK10_07_29_19
+```{r}
+UPENNBIOMK10_07_29_19_join <- UPENNBIOMK10_07_29_19 %>% 
+  mutate(VISCODE = VISCODE2) %>% 
+  select(RID, VISCODE, DRAWDATE, RUNDATE, ABETA40, ABETA42, PTAU, TAU)
+chk_UPENNBIOMK10_07_29_19 <- chk_patients %>% 
+  left_join(UPENNBIOMK10_07_29_19_join, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(DRAWDATE)) 
+mismatch <- UPENNBIOMK10_07_29_19_join %>% 
+  anti_join(chk_UPENNBIOMK10_07_29_19, by = c("RID", "VISCODE"))
+head(mismatch)
+table(chk_UPENNBIOMK10_07_29_19$Phase)
+table(chk_UPENNBIOMK10_07_29_19$VISCODE)
+```
+
+*Question:* Some mismatches with "nv" (no visit defined) as viscodes. Might be fine to ignore.
+
+    
+## UPENNBIOMK12_01_04_21
+```{r}
+UPENNBIOMK12_01_04_21_join <- UPENNBIOMK12_01_04_21 %>% 
+  mutate(VISCODE = VISCODE2) %>% 
+  select(RID, VISCODE, EXAMDATE, RUNDATE, AB40, ABETA, AB4240, PTAU, TAU) 
+chk_UPENNBIOMK12_01_04_21 <- chk_patients %>% 
+  left_join(UPENNBIOMK12_01_04_21_join, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(RUNDATE))
+mismatch <- UPENNBIOMK12_01_04_21_join %>% 
+  anti_join(chk_UPENNBIOMK12_01_04_21, by = c("RID", "VISCODE"))
+head(mismatch)
+table(chk_UPENNBIOMK12_01_04_21$Phase)
+table(chk_UPENNBIOMK12_01_04_21$VISCODE)
+```
+
+*Question:* Some mismatches with "nv" (no visit defined) as viscodes. Might be fine to ignore.
+
+## UPENNBIOMK9_04_19_17
+```{r}
+UPENNBIOMK9_04_19_17_join <- UPENNBIOMK9_04_19_17 %>% 
+  mutate(VISCODE = VISCODE2) %>% 
+  select(RID, VISCODE, EXAMDATE, RUNDATE, ABETA, TAU, PTAU) 
+chk_UPENNBIOMK9_04_19_17 <- chk_patients %>% 
+  left_join(UPENNBIOMK9_04_19_17_join, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(RUNDATE))
+mismatch <- UPENNBIOMK12_01_04_21_join %>% 
+  anti_join(chk_UPENNBIOMK12_01_04_21, by = c("RID", "VISCODE"))
+head(mismatch)
+table(chk_UPENNBIOMK9_04_19_17$Phase)
+table(chk_UPENNBIOMK9_04_19_17$VISCODE)
+```
+
+*Question:* Some mismatches with "nv" (no visit defined) as viscodes. Might be fine to ignore.
+
+## UPENNBIOMKADNIDIAN2017
+```{r}
+UPENNBIOMKADNIDIAN2017_join <- UPENNBIOMKADNIDIAN2017 %>% 
+  mutate(VISCODE = VISCODE2) %>% 
+  select(RID, VISCODE, EXAMDATE, RUNDATE, ABETA, AB40, TAU, PTAU) 
+chk_UPENNBIOMKADNIDIAN2017 <- chk_patients %>% 
+  left_join(UPENNBIOMKADNIDIAN2017_join, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(RUNDATE))
+mismatch <- UPENNBIOMKADNIDIAN2017_join %>% 
+  anti_join(chk_UPENNBIOMKADNIDIAN2017, by = c("RID", "VISCODE"))
+head(mismatch)
+table(chk_UPENNBIOMKADNIDIAN2017$Phase)
+table(chk_UPENNBIOMKADNIDIAN2017$VISCODE)
+```
+
+*Question:* One mismatch with "nv" (no visit defined) as viscode. Might be fine to ignore. The registry dates and examdates varied a little. 
+
+## Plots
+```{r, warning=FALSE}
+id_UPENNBIOMK_MASTER <- chk_UPENNBIOMK_MASTER %>% 
+  mutate(Source = "UPENNBIOMK_MASTER", 
+         Date = DRWDTE) %>% 
+  select(Source, RID, Phase, VISCODE, Date)
+id_UPENNBIOMK10_07_29_19 <- chk_UPENNBIOMK10_07_29_19 %>% 
+  mutate(Source = "UPENNBIOMK10_07_29_19", 
+         Date = DRAWDATE) %>% 
+  select(Source, RID, Phase, VISCODE, Date)
+id_UPENNBIOMK12_01_04_21 <- chk_UPENNBIOMK12_01_04_21 %>% 
+  mutate(Source = "UPENNBIOMK12_01_04_21", 
+         Date = EXAMDATE.y) %>% 
+  select(Source, RID, Phase, VISCODE, Date)
+id_UPENNBIOMK9_04_19_17 <- chk_UPENNBIOMK9_04_19_17 %>% 
+  mutate(Source = "UPENNBIOMK9_04_19_17", 
+         Date = EXAMDATE.y) %>% 
+  select(Source, RID, Phase, VISCODE, Date)
+id_UPENNBIOMKADNIDIAN2017 <- chk_UPENNBIOMKADNIDIAN2017 %>% 
+  mutate(Source = "UPENNBIOMKADNIDIAN2017", 
+         Date = EXAMDATE.y) %>% 
+  select(Source, RID, Phase, VISCODE, Date)
+ids <- rbind(id_UPENNBIOMK_MASTER, 
+             id_UPENNBIOMK10_07_29_19, 
+             id_UPENNBIOMK12_01_04_21, 
+             id_UPENNBIOMK9_04_19_17, 
+             id_UPENNBIOMKADNIDIAN2017)
+
+p_phase <- ggplot(data = ids) + 
+  theme_bw() + 
+  geom_jitter(aes(x = RID, 
+                  y = Source, 
+                  color = Phase, 
+                  text = paste(" RID:", RID, 
+                               "<br> Source:", Source, 
+                               "<br> Phase:", Phase, 
+                               "<br> VISCODE:", VISCODE, 
+                               "<br> Date:", Date)), 
+              alpha = 0.6, height = 0.3, width = 0.2)
+p_visit <- ggplot(data = ids) + 
+  theme_bw() + 
+  geom_jitter(aes(x = RID, 
+                  y = Source, 
+                  color = VISCODE, 
+                  text = paste(" RID:", RID, 
+                               "<br> Source:", Source, 
+                               "<br> Phase:", Phase, 
+                               "<br> VISCODE:", VISCODE, 
+                               "<br> Date:", Date)), 
+              alpha = 0.6, height = 0.3, width = 0.2)
+
+p_times <- ggplot(data = ids) + 
+  theme_bw() + 
+  geom_jitter(aes(x = Date, 
+                  y = Source, 
+                  color = Phase, 
+                  text = paste(" RID:", RID, 
+                               "<br> Source:", Source, 
+                               "<br> Phase:", Phase, 
+                               "<br> VISCODE:", VISCODE, 
+                               "<br> Date:", Date)), 
+              alpha = 0.6, height = 0.3, width = 0.2) + 
+  scale_x_discrete(breaks = c("2005-11-10", "2010-03-26", 
+                              "2011-09-16", "2016-09-26", 
+                              "2019-02-20", "2020-06-15")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 0.5, 
+                                   hjust=1))
+
+ggplotly(p_phase, tooltip="text")
+ggplotly(p_visit, tooltip="text")
+ggplotly(p_times, tooltip="text")
+
+```
+
+
+# Merge Data
+```{r}
+#UPENNBIOMK10_07_29_19_join
+#UPENNBIOMK12_01_04_21_join
+#UPENNBIOMK9_04_19_17_join
+csf_9  <- UPENNBIOMK9_04_19_17_join %>% 
+  rename(ABETA42 = ABETA) %>% 
+  mutate(ABETA40 = NA, 
+         batch_csf = 9)
+csf_10 <- UPENNBIOMK10_07_29_19_join %>% 
+  rename(EXAMDATE = DRAWDATE) %>% 
+  mutate(batch_csf = 10)
+csf_12 <- UPENNBIOMK12_01_04_21_join %>% 
+  rename(ABETA40 = AB40, 
+         ABETA42 = ABETA) %>% 
+  mutate(batch_csf = 12) %>% 
+  select(-AB4240)
+adni_csf <- rbind(csf_9, csf_10, csf_12) %>% 
+  arrange(RID, VISCODE)
+
+# check whether there is duplicated records
+nrow(adni_csf)
+nrow(adni_csf %>% distinct(RID, VISCODE, batch_csf))
+# no
+
+write.csv(adni_csf, "adni_csf.csv")
+```
+
+In this CSF data table, we merged data across four ADNI phases (ADNI1, ADNI2, ADNIGO, and ADNI3) from three resources (UPENNBIOMK9_04_19_17, UPENNBIOMK10_07_29_19, UPENNBIOMK12_01_04_21). All the records tested are based on the fully automated Roche Elecsys immunoassay. There is another data source called UPENNBIOMK_MASTER, that contains data from ADNI1, ADNI2, and ADNIGO. But it was tested by an older version immunoassay. So, we used UPENNBIOMK9_04_19_17 instead, which rerun all the samples with the fully automated Roche Elecsys immunoassay.
+
+In the three resources, UPENNBIOMK9_04_19_17 contains most patients from ADNI1, ADNI2, and ADNIGO; UPENNBIOMK10_07_29_19 and UPENNBIOMK12_01_04_21 mostly contain ADNI3 data, but it also rerun some previous samples to address the batch effect. 
+
+Since there are three resources of CSF data, we use batch_csf to indicate the resource of each record (9-UPENNBIOMK9_04_19_17, 10-UPENNBIOMK10_07_29_19, 12-UPENNBIOMK12_01_04_21). 
+
+Consider batch effect
+
+
+# Creating the variables dictionary 
+```{r}
+csf_file_list <- c("UPENNBIOMK9_04_19_17", "UPENNBIOMK10_07_29_19", "UPENNBIOMK12_01_04_21")
+vars_csf <- data.frame()
+for (file in csf_file_list) {
+  dat <- eval(as.name(file))
+  var_names <- names(dat)
+  n <- length(var_names)
+  tem <- data.frame(Source      = rep("ADNI", n), 
+                    Type        = rep("CSF", n), 
+                    File        = rep(file, n), 
+                    Vatiables   = var_names, 
+                    Inter_name  = rep(NA, n), 
+                    Description = rep(NA, n))
+  vars_csf <- rbind(vars_csf, tem)
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+

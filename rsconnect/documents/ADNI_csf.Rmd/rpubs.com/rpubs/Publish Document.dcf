@@ -1,0 +1,11 @@
+name: Publish Document
+title:
+username:
+account: rpubs
+server: rpubs.com
+hostUrl: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/780355/ed0c4e2a5f1b4cbaafb154ecf43b3872
+bundleId: https://api.rpubs.com/api/v1/document/780355/ed0c4e2a5f1b4cbaafb154ecf43b3872
+url: http://rpubs.com/Thewhey/780355
+when: 1625172184.45286
+lastSyncTime: 1625172184.45287

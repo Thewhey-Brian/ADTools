@@ -1,0 +1,625 @@
+"","var","biocard","nacc","des"
+"1","naccadc",FALSE,TRUE,"ADC at which subject was seen"
+"2","naccid",FALSE,TRUE,"Subject ID number"
+"3","formver",FALSE,TRUE,"Form version number"
+"4","packet",FALSE,TRUE,"Packet code"
+"5","vnumber",FALSE,TRUE,NA
+"6","visitmo",FALSE,TRUE,"Form date — month"
+"7","visitday",FALSE,TRUE,"Form date — day"
+"8","visityr",FALSE,TRUE,"Form date — year"
+"9","nacclivs",FALSE,TRUE,"Living situation"
+"10","independ",FALSE,TRUE,"Level of independence"
+"11","maristat",FALSE,TRUE,"Marital status"
+"12","pd",FALSE,TRUE,"Parkinson’s disease (PD)"
+"13","hyperten",FALSE,TRUE,"Hypertension"
+"14","diabetes",FALSE,TRUE,"Diabetes"
+"15","dep2yrs",FALSE,TRUE,"Active depression in the last two years"
+"16","depothr",FALSE,TRUE,"Depression episodes more than two years ago"
+"17","alcohol",FALSE,TRUE,"Alcohol abuse — clinically significant occurring over a 12-month period manifested in one of the following areas: work, driving, legal, or social"
+"18","smokyrs",FALSE,TRUE,"Total years smoked cigarettes"
+"19","height",FALSE,TRUE,"Subject’s height (inches)"
+"20","weight",FALSE,TRUE,"Subject’s weight (lbs)"
+"21","bpdias",FALSE,TRUE,"Subject blood pressure (sitting), diastolic"
+"22","bpsys",FALSE,TRUE,"Subject blood pressure (sitting), systolic"
+"23","cvdcog",FALSE,TRUE,"Cerebrovascular disease contributingto cognitive impairment"
+"24","strokcog",FALSE,TRUE,"Relationship between stroke andcognitive impairment"
+"25","cvdimag",FALSE,TRUE,"Imaging evidence"
+"26","memory",FALSE,TRUE,"Memory"
+"27","orient",FALSE,TRUE,"Orientation"
+"28","judgment",FALSE,TRUE,"Judgment and problem-solving"
+"29","commun",FALSE,TRUE,"Community affairs"
+"30","homehobb",FALSE,TRUE,"Home and hobbies"
+"31","perscare",FALSE,TRUE,"Personal care"
+"32","cdrsum",FALSE,TRUE,"CDR® sum of boxes"
+"33","cdrglob",FALSE,TRUE,"Global CDR®"
+"34","cdrlang",FALSE,TRUE,"Language"
+"35","naccgds",FALSE,TRUE,"Total GDS Score"
+"36","normal",FALSE,TRUE,NA
+"37","decsub",FALSE,TRUE,NA
+"38","decin",FALSE,TRUE,NA
+"39","decclin",FALSE,TRUE,NA
+"40","cogmem",FALSE,TRUE,NA
+"41","cogjudg",FALSE,TRUE,NA
+"42","naccadni",FALSE,TRUE,NA
+"43","naccageb",FALSE,TRUE,"Subject’s age at initial visit"
+"44","naccapoe",FALSE,TRUE,NA
+"45","naccavst",FALSE,TRUE,"Total number of all UDS visits made"
+"46","naccdad",FALSE,TRUE,"Indicator of father with cognitiveimpairment"
+"47","naccdage",FALSE,TRUE,NA
+"48","naccdied",FALSE,TRUE,"Subject is known to be deceased"
+"49","nacchdis",FALSE,TRUE,NA
+"50","naccidem",FALSE,TRUE,"Incident dementia during UDS follow- up"
+"51","naccmcii",FALSE,TRUE,"Incident MCI during UDS follow-up"
+"52","naccint",FALSE,TRUE,NA
+"53","naccmod",FALSE,TRUE,"Month of death"
+"54","naccmom",FALSE,TRUE,"Indicator of mother with cognitiveimpairment"
+"55","naccmri",FALSE,TRUE,NA
+"56","naccne4s",FALSE,TRUE,NA
+"57","naccnihr",FALSE,TRUE,"Derived NIH race definitions"
+"58","naccnmri",FALSE,TRUE,"Total number of MRI sessions"
+"59","naccnorm",FALSE,TRUE,"Normal cognition at all visits to date"
+"60","naccyod",FALSE,TRUE,"Year of death"
+"61","naccadmd",FALSE,TRUE,"Reported current use of a FDA- approved medication for Alzheimer’s disease symptoms"
+"62","naccage",FALSE,TRUE,"Subject’s age at visit"
+"63","naccbmi",FALSE,TRUE,"Body mass index (BMI)"
+"64","naccfdys",FALSE,TRUE,"Days from initial visit to each follow- up visit"
+"65","nacctmci",FALSE,TRUE,"Mild cognitive impairment (MCI) type"
+"66","naccudsd",FALSE,TRUE,"Cognitive status at UDS visit"
+"67","naccwndw",FALSE,TRUE,NA
+"68","npformver",FALSE,TRUE,NA
+"69","naccamy",FALSE,TRUE,NA
+"70","naccbraa",FALSE,TRUE,NA
+"71","naccdiff",FALSE,TRUE,NA
+"72","nacclewy",FALSE,TRUE,NA
+"73","naccneur",FALSE,TRUE,NA
+"74","naccprio",FALSE,TRUE,NA
+"75","naccvasc",FALSE,TRUE,NA
+"76","npadnc",FALSE,TRUE,NA
+"77","npfaut",FALSE,TRUE,NA
+"78","npfaut1",FALSE,TRUE,NA
+"79","npfaut2",FALSE,TRUE,NA
+"80","npfaut3",FALSE,TRUE,NA
+"81","npfaut4",FALSE,TRUE,NA
+"82","npftdtau",FALSE,TRUE,NA
+"83","nphipscl",FALSE,TRUE,NA
+"84","npthal",FALSE,TRUE,NA
+"85","npwbrwt",FALSE,TRUE,NA
+"86","csfvol",FALSE,TRUE,NA
+"87","frontcsf",FALSE,TRUE,NA
+"88","frontgry",FALSE,TRUE,NA
+"89","frontwht",FALSE,TRUE,NA
+"90","grayvol",FALSE,TRUE,NA
+"91","hippovol",FALSE,TRUE,NA
+"92","mridti",FALSE,TRUE,NA
+"93","mridwi",FALSE,TRUE,NA
+"94","mridy",FALSE,TRUE,NA
+"95","mrifield",FALSE,TRUE,NA
+"96","mriflair",FALSE,TRUE,NA
+"97","mrimanu",FALSE,TRUE,NA
+"98","mrimo",FALSE,TRUE,NA
+"99","mrimodl",FALSE,TRUE,NA
+"100","mriother",FALSE,TRUE,NA
+"101","mrit1",FALSE,TRUE,NA
+"102","mrit2",FALSE,TRUE,NA
+"103","mriyr",FALSE,TRUE,NA
+"104","naccbrnv",FALSE,TRUE,NA
+"105","naccicv",FALSE,TRUE,NA
+"106","naccmnum",FALSE,TRUE,NA
+"107","naccmrdy",FALSE,TRUE,NA
+"108","naccmrfi",FALSE,TRUE,NA
+"109","naccmria",FALSE,TRUE,NA
+"110","naccmvol",FALSE,TRUE,NA
+"111","naccwmvl",FALSE,TRUE,NA
+"112","occipcsf",FALSE,TRUE,NA
+"113","occipgry",FALSE,TRUE,NA
+"114","occipwht",FALSE,TRUE,NA
+"115","parcsf",FALSE,TRUE,NA
+"116","pargry",FALSE,TRUE,NA
+"117","parwht",FALSE,TRUE,NA
+"118","tempcsf",FALSE,TRUE,NA
+"119","tempgry",FALSE,TRUE,NA
+"120","tempwht",FALSE,TRUE,NA
+"121","whitevol",FALSE,TRUE,NA
+"122","wmhvol",FALSE,TRUE,NA
+"123","decclcog",FALSE,TRUE,NA
+"124","animals",FALSE,TRUE,NA
+"125","boston",FALSE,TRUE,"Boston Naming Test (30) — Totalscore"
+"126","cogstat",FALSE,TRUE,"Per clinician, based on theneuropsychological examination, thesubject’s cognitive status is deemed"
+"127","craftcue",FALSE,TRUE,"Craft Story 21 Recall (Delayed) — Cue (boy) needed"
+"128","craftdre",FALSE,TRUE,"Craft Story 21 Recall (Delayed) — Total story units recalled, paraphrase scoring"
+"129","craftdti",FALSE,TRUE,"Craft Story 21 Recall (Delayed) — Delay time"
+"130","craftdvr",FALSE,TRUE,"Craft Story 21 Recall (Delayed) — Total story units recalled, verbatim scoring"
+"131","crafturs",FALSE,TRUE,"Craft Story 21 Recall (Immediate) — Total story units recalled, paraphrase scoring"
+"132","craftvrs",FALSE,TRUE,"Craft Story 21 Recall (Immediate) — Total story units recalled, verbatim scoring"
+"133","digbacct",FALSE,TRUE,"Number Span Test: Backward — Number of correct trials"
+"134","digbacls",FALSE,TRUE,"Number Span Test: Backward — Longest span backward"
+"135","digforct",FALSE,TRUE,"Number Span Test: Forward — Number of correct trials"
+"136","digforsl",FALSE,TRUE,"Number Span Test: Forward — Longest span forward"
+"137","digib",FALSE,TRUE,NA
+"138","digiblen",FALSE,TRUE,NA
+"139","digif",FALSE,TRUE,NA
+"140","digiflen",FALSE,TRUE,NA
+"141","logiday",FALSE,TRUE,NA
+"142","logimem",FALSE,TRUE,NA
+"143","logimo",FALSE,TRUE,NA
+"144","logiprev",FALSE,TRUE,NA
+"145","logiyr",FALSE,TRUE,NA
+"146","memtime",FALSE,TRUE,NA
+"147","memunits",FALSE,TRUE,NA
+"148","mintpcnc",FALSE,TRUE,"Multilingual Naming Test (MINT) — Phonemic cues: Number correct with cue"
+"149","mintpcng",FALSE,TRUE,"Multilingual Naming Test (MINT) — Phonemic cues: Number given"
+"150","mintscnc",FALSE,TRUE,"Multilingual Naming Test (MINT) — Semantic cues: Number correct with cue"
+"151","mintscng",FALSE,TRUE,"Multilingual Naming Test (MINT) — Semantic cues: Number given"
+"152","minttots",FALSE,TRUE,"Multilingual Naming Test (MINT) — Total score"
+"153","minttotw",FALSE,TRUE,"Multilingual Naming Test (MINT) — Total correct without semantic cue"
+"154","mmsecomp",FALSE,TRUE,"Was any part of the MMSE completed?"
+"155","mmsehear",FALSE,TRUE,"Subject was unable to complete one or more sections due to hearing impairment"
+"156","mmselan",FALSE,TRUE,"Language of MMSE administration"
+"157","mmselanx",FALSE,TRUE,"Language of MMSE administration — Other (specify)"
+"158","mmseloc",FALSE,TRUE,"Administration of the MMSE was:"
+"159","mmseorda",FALSE,TRUE,"Orientation subscale score — Time"
+"160","mmseorlo",FALSE,TRUE,"Orientation subscale score — Place"
+"161","mmsereas",FALSE,TRUE,NA
+"162","mmsevis",FALSE,TRUE,"Subject was unable to complete one or more sections due to visual impairment"
+"163","mocaabst",FALSE,TRUE,"MoCA: Abstraction"
+"164","mocacloc",FALSE,TRUE,"MoCA: Visuospatial/executive — Clock contour"
+"165","mocacloh",FALSE,TRUE,"MoCA: Visuospatial/executive — Clock hands"
+"166","mocaclon",FALSE,TRUE,"MoCA: Visuospatial/executive — Clock numbers"
+"167","mocacomp",FALSE,TRUE,"Was any part of MoCA administered?"
+"168","mocacube",FALSE,TRUE,"MoCA: Visuospatial/executive — Cube"
+"169","mocadigi",FALSE,TRUE,"MoCA: Attention — Digits"
+"170","mocaflue",FALSE,TRUE,"MoCA: Language — Fluency"
+"171","mocahear",FALSE,TRUE,"Subject was unable to complete one or more sections due to hearing impairment"
+"172","mocalan",FALSE,TRUE,"Language of MoCA administration"
+"173","mocalanx",FALSE,TRUE,"Language of MoCA administration —Other, specify"
+"174","mocalett",FALSE,TRUE,"MoCA: Attention — Letter A"
+"175","mocaloc",FALSE,TRUE,"Where was MoCA administered?"
+"176","mocanami",FALSE,TRUE,"MoCA: Language — Naming"
+"177","mocaorct",FALSE,TRUE,"MoCA: Orientation — City"
+"178","mocaordt",FALSE,TRUE,"MoCA: Orientation — Date"
+"179","mocaordy",FALSE,TRUE,"MoCA: Orientation — Day"
+"180","mocaormo",FALSE,TRUE,"MoCA: Orientation — Month"
+"181","mocaorpl",FALSE,TRUE,"MoCA: Orientation — Place"
+"182","mocaoryr",FALSE,TRUE,"MoCA: Orientation — Year"
+"183","mocareas",FALSE,TRUE,"If no part of MoCA administered,reason code"
+"184","mocarecc",FALSE,TRUE,"MoCA: Delayed recall — Category cue"
+"185","mocarecn",FALSE,TRUE,"MoCA: Delayed recall — No cue"
+"186","mocarecr",FALSE,TRUE,"MoCA: Delayed recall — Recognition"
+"187","mocaregi",FALSE,TRUE,"MoCA: Memory — Registration (two trials)"
+"188","mocarepe",FALSE,TRUE,"MoCA: Language — Repetition"
+"189","mocaser7",FALSE,TRUE,"MoCA: Attention — Serial 7s"
+"190","mocatots",FALSE,TRUE,"MoCA Total Raw Score — uncorrected"
+"191","mocatrai",FALSE,TRUE,"MoCA: Visuospatial/executive — Trails"
+"192","mocavis",FALSE,TRUE,"Subject was unable to completeone or more sections due to visualimpairment"
+"193","naccc1",FALSE,TRUE,"Form date discrepancy between UDSForm A1 and Form C1"
+"194","naccc2",FALSE,TRUE,"Form date discrepancy between UDS Form A1 and Form C2"
+"195","naccmmse",FALSE,TRUE,"Total MMSE score (using D-L-R-O-W)"
+"196","npsycloc",FALSE,TRUE,NA
+"197","npsylan",FALSE,TRUE,NA
+"198","npsylanx",FALSE,TRUE,NA
+"199","pentagon",FALSE,TRUE,"Intersecting pentagon subscale score"
+"200","traila",FALSE,TRUE,NA
+"201","trailali",FALSE,TRUE,"Part A — Number of correct lines"
+"202","trailarr",FALSE,TRUE,NA
+"203","trailb",FALSE,TRUE,"Trail Making Test Part B — Totalnumber of seconds to complete"
+"204","trailbli",FALSE,TRUE,"Part B — Number of correct lines"
+"205","trailbrr",FALSE,TRUE,"Part B — Number of commissionerrors"
+"206","udsbenrs",FALSE,TRUE,NA
+"207","udsbentc",FALSE,TRUE,NA
+"208","udsbentd",FALSE,TRUE,NA
+"209","udsverfc",FALSE,TRUE,"Number of correct F-words generatedin 1 minute"
+"210","udsverfn",FALSE,TRUE,"Number of F-words repeated in 1minute"
+"211","udsverlc",FALSE,TRUE,"Number of correct L-words generatedin 1 minute"
+"212","udsverln",FALSE,TRUE,"Number of non-L-words and ruleviolation errors in 1 minute"
+"213","udsverlr",FALSE,TRUE,"Number of L-words repeated in 1minute"
+"214","udsvernf",FALSE,TRUE,"Number of non-F-words and ruleviolation errors in 1 minute"
+"215","udsverte",FALSE,TRUE,"Total number of F-word and L-wordrepetition errors"
+"216","udsverti",FALSE,TRUE,"Total number of non-F/L-words andrule violation errors"
+"217","udsvertn",FALSE,TRUE,"Total number of correct F-words andL-words"
+"218","veg",FALSE,TRUE,NA
+"219","wais",FALSE,TRUE,"WAIS-R Digit Symbol"
+"220","admut",FALSE,TRUE,NA
+"221","alcabuse",FALSE,TRUE,"Current alcohol abuse"
+"222","alzdis",FALSE,TRUE,NA
+"223","alzdisif",FALSE,TRUE,NA
+"224","amndem",FALSE,TRUE,"Dementia syndrome — Amnesticmultidomain dementia syndrome"
+"225","amylcsf",FALSE,TRUE,"Abnormally low amyloid in CSF"
+"226","amylpet",FALSE,TRUE,"Abnormally elevated amyloid on PET"
+"227","anxiet",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Anxiety"
+"228","anxietif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Anxiety"
+"229","bipoldif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — bipolar disorder"
+"230","bipoldx",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Bipolar disorder"
+"231","brnincte",FALSE,TRUE,"Symptoms consistent with chronic traumatic encephalopathy (CTE)"
+"232","csftau",FALSE,TRUE,"Abnormally elevated CSF Tau or pTau"
+"233","cvd",FALSE,TRUE,NA
+"234","cvdif",FALSE,TRUE,NA
+"235","datscan",FALSE,TRUE,"Dopamine transporter scan (DATscan) evidence for Lewy body disease"
+"236","delir",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Delirium"
+"237","delirif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Delirium"
+"238","deptreat",FALSE,TRUE,"Depression — Treated or untreated"
+"239","dxmethod",FALSE,TRUE,"Diagnosis method"
+"240","epilep",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Epilepsy"
+"241","epilepif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Epilepsy"
+"242","esstreif",FALSE,TRUE,NA
+"243","esstrem",FALSE,TRUE,NA
+"244","fdgad",FALSE,TRUE,"FDG-PET pattern of AD"
+"245","fdgftld",FALSE,TRUE,"FDG-PET evidence for frontal or anterior temporal hypometabolism for FTLD"
+"246","ftdsyn",FALSE,TRUE,NA
+"247","ftldmo",FALSE,TRUE,NA
+"248","ftldmoif",FALSE,TRUE,NA
+"249","ftldmut",FALSE,TRUE,NA
+"250","ftldnoif",FALSE,TRUE,NA
+"251","ftldnos",FALSE,TRUE,NA
+"252","ftldsubt",FALSE,TRUE,NA
+"253","ftldsubx",FALSE,TRUE,NA
+"254","hippatr",FALSE,TRUE,"Hippocampal atrophy"
+"255","hiv",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Human immunodeficiency virus (HIV)"
+"256","hivif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — HIV"
+"257","imagewmh",FALSE,TRUE,"Extensive white-matter hyperintensity (CHS score 7-8)"
+"258","imaglac",FALSE,TRUE,"Lacunar infarct(s)"
+"259","imaglinf",FALSE,TRUE,"Large vessel infarct(s)"
+"260","imagmach",FALSE,TRUE,"Macrohemorrhage(s)"
+"261","imagmich",FALSE,TRUE,"Microhemorrhage(s)"
+"262","imagmwmh",FALSE,TRUE,"Moderate white-matter hyperintensity (CHS score 5-6)"
+"263","impsub",FALSE,TRUE,NA
+"264","impsubif",FALSE,TRUE,NA
+"265","infnetw",FALSE,TRUE,NA
+"266","infwmh",FALSE,TRUE,NA
+"267","lbdif",FALSE,TRUE,NA
+"268","lbdis",FALSE,TRUE,NA
+"269","lbdsyn",FALSE,TRUE,NA
+"270","mrftld",FALSE,TRUE,"Structural MR evidence for frontal or anterior temporal atrophy for FTLD"
+"271","msa",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Multiple system atrophy (MSA)"
+"272","msaif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Multiple system atrophy (MSA)"
+"273","naccalzd",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Alzheimer’s disease"
+"274","naccalzp",FALSE,TRUE,"Primary, contributing, or non- contributing cause of observed cognitive impairment — Alzheimer’s disease (AD)"
+"275","naccbvft",FALSE,TRUE,"Dementia syndrome — behavioral variant FTD syndrome (bvFTD)"
+"276","naccetpr",FALSE,TRUE,"Primary etiologic diagnosis (MCI); impaired, not MCI; or dementia"
+"277","nacclbde",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Lewy body disease"
+"278","nacclbdp",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Lewy body disease (LBD)"
+"279","nacclbds",FALSE,TRUE,"Dementia syndrome — Lewy body dementia syndrome"
+"280","naccmcia",FALSE,TRUE,"MCI domain affected — attention"
+"281","naccmcie",FALSE,TRUE,"MCI domain affected — executive function"
+"282","naccmcil",FALSE,TRUE,"MCI domain affected — language"
+"283","naccmciv",FALSE,TRUE,"MCI domain affected — visuospatial"
+"284","naccppa",FALSE,TRUE,"Primary progressive aphasia (PPA)with cognitive impairment"
+"285","naccppag",FALSE,TRUE,"Dementia syndrome — Primaryprogressive aphasia (PPA) subtypeaccording to the criteria outlined byGorno-Tempini et al. 2011"
+"286","naccppme",FALSE,TRUE,"Primary progressive aphasia (PPA)subtype according to older criteriaoutlined by Mesulam et al (2001 and2003)"
+"287","namndem",FALSE,TRUE,"Dementia syndrome — Non-amnestic multidomain dementia, not PCA, PPA, bvFTD, or DLB syndrome"
+"288","neopstat",FALSE,TRUE,"CNS neoplasm — benign or malignant"
+"289","othbiom",FALSE,TRUE,"Biomarker findings — Other"
+"290","othbiomx",FALSE,TRUE,"Biomarker findings — Other (specify)"
+"291","othcog",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Other neurological, genetic, or infectious condition"
+"292","othcogif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Other neurological, genetic, or infectious condition"
+"293","othcogx",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Other neurological, genetic, or infectious conditions (specify)"
+"294","othmut",FALSE,TRUE,"Does the subject have a hereditary mutation other than an AD or FTLD mutation?"
+"295","othmutx",FALSE,TRUE,"Other mutation, specify"
+"296","othpsyx",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Other psychiatric disease (specify)"
+"297","pca",FALSE,TRUE,"Dementia syndrome — Posteriorcortical atrophy syndrome (or primaryvisual presentation)"
+"298","ppasyn",FALSE,TRUE,NA
+"299","prevstk",FALSE,TRUE,NA
+"300","ptsddx",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Post-traumatic stress disorder (PTSD)"
+"301","ptsddxif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — PTSD"
+"302","schizoif",FALSE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Schizophrenia or other psychosis"
+"303","schizop",FALSE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Schizophrenia or other psychosis"
+"304","stkimag",FALSE,TRUE,NA
+"305","strokdec",FALSE,TRUE,NA
+"306","taupetad",FALSE,TRUE,"Tau PET evidence for AD"
+"307","tpetftld",FALSE,TRUE,"Tau PET evidence for FTLD"
+"308","naccacsf",FALSE,TRUE,"One or more measures of Aβ1–42reported"
+"309","naccpcsf",FALSE,TRUE,"One or more measures of P-tau181Preported"
+"310","nacctcsf",FALSE,TRUE,"One or more measures of T-taureported"
+"311","naccapet",FALSE,TRUE,NA
+"312","naccnapt",FALSE,TRUE,NA
+"313","subject_id",TRUE,FALSE,NA
+"314","date_diag",TRUE,FALSE,NA
+"315","diagnosis",TRUE,FALSE,NA
+"316","dob",TRUE,FALSE,NA
+"317","mciaplan",TRUE,FALSE,NA
+"318","mciapatt",TRUE,FALSE,NA
+"319","mciapex",TRUE,FALSE,NA
+"320","mciapvis",TRUE,FALSE,NA
+"321","mcin1lan",TRUE,FALSE,NA
+"322","mcin1att",TRUE,FALSE,NA
+"323","mcin1ex",TRUE,FALSE,NA
+"324","mcin1vis",TRUE,FALSE,NA
+"325","mcin2lan",TRUE,FALSE,NA
+"326","mcin2att",TRUE,FALSE,NA
+"327","mcin2ex",TRUE,FALSE,NA
+"328","mcin2vis",TRUE,FALSE,NA
+"329","date_cog",TRUE,FALSE,NA
+"330","source",TRUE,FALSE,NA
+"331","c1201d",TRUE,FALSE,NA
+"332","c1203b",TRUE,FALSE,NA
+"333","logmem1_b",TRUE,FALSE,NA
+"334","c1209a",TRUE,FALSE,NA
+"335","logmem2_b",TRUE,FALSE,NA
+"336","c1209b",TRUE,FALSE,NA
+"337","ds_indicator",TRUE,FALSE,NA
+"338","c1204a",TRUE,FALSE,NA
+"339","c1204b",TRUE,FALSE,NA
+"340","c1205a",TRUE,FALSE,NA
+"341","c1205b",TRUE,FALSE,NA
+"342","c1206a",TRUE,FALSE,NA
+"343","c1206b",TRUE,FALSE,NA
+"344","c1a104b",TRUE,FALSE,NA
+"345","c1a104c",TRUE,FALSE,NA
+"346","c1a105b",TRUE,FALSE,NA
+"347","c1a105c",TRUE,FALSE,NA
+"348","c1207a",TRUE,FALSE,NA
+"349","c1207b",TRUE,FALSE,NA
+"350","c1208a",TRUE,FALSE,NA
+"351","c1210a",TRUE,FALSE,NA
+"352","bntpct",TRUE,FALSE,NA
+"353","c1a101a",TRUE,FALSE,NA
+"354","c1a101b",TRUE,FALSE,NA
+"355","c1a101c",TRUE,FALSE,NA
+"356","c1a102a",TRUE,FALSE,NA
+"357","c1a102b",TRUE,FALSE,NA
+"358","c1a102c",TRUE,FALSE,NA
+"359","c1a103a",TRUE,FALSE,NA
+"360","c1a103b",TRUE,FALSE,NA
+"361","c1a103c",TRUE,FALSE,NA
+"362","c1a106",TRUE,FALSE,NA
+"363","c1a107",TRUE,FALSE,NA
+"364","c1a108",TRUE,FALSE,NA
+"365","c1a109",TRUE,FALSE,NA
+"366","c1a110",TRUE,FALSE,NA
+"367","c1a111",TRUE,FALSE,NA
+"368","c1a112",TRUE,FALSE,NA
+"369","c1a113",TRUE,FALSE,NA
+"370","c1a114",TRUE,FALSE,NA
+"371","c1a115",TRUE,FALSE,NA
+"372","c1a116",TRUE,FALSE,NA
+"373","c1a117",TRUE,FALSE,NA
+"374","c1a118",TRUE,FALSE,NA
+"375","c1a119",TRUE,FALSE,NA
+"376","c1a120",TRUE,FALSE,NA
+"377","c1a121",TRUE,FALSE,NA
+"378","c1a122",TRUE,FALSE,NA
+"379","c1a123",TRUE,FALSE,NA
+"380","c1a124",TRUE,FALSE,NA
+"381","c1a125",TRUE,FALSE,NA
+"382","c1a126",TRUE,FALSE,NA
+"383","c1a127",TRUE,FALSE,NA
+"384","c1a128",TRUE,FALSE,NA
+"385","c1a129",TRUE,FALSE,NA
+"386","c1a130",TRUE,FALSE,NA
+"387","c1a131",TRUE,FALSE,NA
+"388","c1a132",TRUE,FALSE,NA
+"389","c1a133",TRUE,FALSE,NA
+"390","fruitl",TRUE,FALSE,NA
+"391","fruiper",TRUE,FALSE,NA
+"392","fruiint",TRUE,FALSE,NA
+"393","jolototl",TRUE,FALSE,NA
+"394","mattis",TRUE,FALSE,NA
+"395","supermkt",TRUE,FALSE,NA
+"396","nart_tl",TRUE,FALSE,NA
+"397","nart_iq",TRUE,FALSE,NA
+"398","info",TRUE,FALSE,NA
+"399","figural",TRUE,FALSE,NA
+"400","vispair1",TRUE,FALSE,NA
+"401","visrepr1",TRUE,FALSE,NA
+"402","vismemsp",TRUE,FALSE,NA
+"403","vispair2",TRUE,FALSE,NA
+"404","visrepr2",TRUE,FALSE,NA
+"405","wmsrverb",TRUE,FALSE,NA
+"406","wmsrvisu",TRUE,FALSE,NA
+"407","wmsrgen",TRUE,FALSE,NA
+"408","wmsrdely",TRUE,FALSE,NA
+"409","waisvcrw",TRUE,FALSE,NA
+"410","waisvcss",TRUE,FALSE,NA
+"411","waisvcac",TRUE,FALSE,NA
+"412","waissmrw",TRUE,FALSE,NA
+"413","waissmss",TRUE,FALSE,NA
+"414","waissmac",TRUE,FALSE,NA
+"415","waisinrw",TRUE,FALSE,NA
+"416","waisinss",TRUE,FALSE,NA
+"417","waisinac",TRUE,FALSE,NA
+"418","waisparw",TRUE,FALSE,NA
+"419","waispass",TRUE,FALSE,NA
+"420","waispaac",TRUE,FALSE,NA
+"421","waispcrw",TRUE,FALSE,NA
+"422","waispcss",TRUE,FALSE,NA
+"423","waisrcac",TRUE,FALSE,NA
+"424","date_csf",TRUE,FALSE,NA
+"425","codename",TRUE,FALSE,NA
+"426","patient_sample",TRUE,FALSE,NA
+"427","sample_csf_date",TRUE,FALSE,NA
+"428","tau",TRUE,FALSE,NA
+"429","p_tau",TRUE,FALSE,NA
+"430","abeta",TRUE,FALSE,NA
+"431","date_hippo",TRUE,FALSE,NA
+"432","intracranial_vol_hippo",TRUE,FALSE,NA
+"433","l_hippo",TRUE,FALSE,NA
+"434","r_hippo",TRUE,FALSE,NA
+"435","bi_hippo",TRUE,FALSE,NA
+"436","date_amy",TRUE,FALSE,NA
+"437","intracranial_vol_amy",TRUE,FALSE,NA
+"438","l_amy",TRUE,FALSE,NA
+"439","r_amy",TRUE,FALSE,NA
+"440","bi_amy",TRUE,FALSE,NA
+"441","date_ec",TRUE,FALSE,NA
+"442","deidentifiedsubjectid",TRUE,FALSE,NA
+"443","subjectnihid",TRUE,FALSE,NA
+"444","scan",TRUE,FALSE,NA
+"445","ageatscan",TRUE,FALSE,NA
+"446","diagnosisatlastscan",TRUE,FALSE,NA
+"447","consensusdiagnosis",TRUE,FALSE,NA
+"448","intracranial_vol_ec",TRUE,FALSE,NA
+"449","l_ec_vol",TRUE,FALSE,NA
+"450","r_ec_vol",TRUE,FALSE,NA
+"451","l_ec_thick",TRUE,FALSE,NA
+"452","r_ec_thick",TRUE,FALSE,NA
+"453","bi_ec_vol",TRUE,FALSE,NA
+"454","bi_ec_thick",TRUE,FALSE,NA
+"455","startyear",TRUE,FALSE,NA
+"456","folljhu",TRUE,FALSE,NA
+"457","birthyear",TRUE,FALSE,NA
+"458","deathyear",TRUE,FALSE,NA
+"459","handed",TRUE,FALSE,"Is the subject left- or right-handed?"
+"460","racex",TRUE,FALSE,"Race, other — specify"
+"461","racesec",TRUE,FALSE,"Second race"
+"462","racesecx",TRUE,FALSE,"Second race, other — specify"
+"463","raceter",TRUE,FALSE,"Third race"
+"464","raceterx",TRUE,FALSE,"Third race, other — specify"
+"465","hispor",TRUE,FALSE,"Hispanic origins"
+"466","hisporx",TRUE,FALSE,"Hispanic origins, other — specify"
+"467","marstat",TRUE,FALSE,NA
+"468","marstax",TRUE,FALSE,NA
+"469","marstat2",TRUE,FALSE,NA
+"470","marsta2x",TRUE,FALSE,NA
+"471","marstat3",TRUE,FALSE,NA
+"472","marsta3x",TRUE,FALSE,NA
+"473","primlanx",TRUE,FALSE,"Primary language, other- specify"
+"474","apoecode",TRUE,FALSE,NA
+"475","jhuanonid",TRUE,FALSE,NA
+"476","lettercode",TRUE,FALSE,NA
+"477","apoe",TRUE,FALSE,NA
+"478","exclude",TRUE,FALSE,NA
+"479","decage",TRUE,TRUE,"Based on clinician’s assessment, at what age did the cognitive decline begin?"
+"480","whodiddx",TRUE,TRUE,"Who did diagnosis"
+"481","normcog",TRUE,TRUE,"Normal cognition and behavior"
+"482","demented",TRUE,TRUE,"Met criteria for dementia"
+"483","mciamem",TRUE,TRUE,NA
+"484","mciaplus",TRUE,TRUE,NA
+"485","mcinon1",TRUE,TRUE,NA
+"486","mcinon2",TRUE,TRUE,NA
+"487","impnomci",TRUE,TRUE,"Cognitively impaired, not MCI"
+"488","probad",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Probable Alzheimer’s disease"
+"489","probadif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Probable Alzheimer’s disease"
+"490","possad",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Possible Alzheimer’s disease"
+"491","possadif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Possible Alzheimer’s disease"
+"492","dlb",TRUE,TRUE,NA
+"493","dlbif",TRUE,TRUE,NA
+"494","vasc",TRUE,TRUE,NA
+"495","vascif",TRUE,TRUE,NA
+"496","vascps",TRUE,TRUE,NA
+"497","vascpsif",TRUE,TRUE,NA
+"498","alcdem",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Cognitive impairment due to alcohol abuse"
+"499","alcdemif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Alcohol abuse"
+"500","demun",TRUE,TRUE,NA
+"501","demunif",TRUE,TRUE,NA
+"502","ftd",TRUE,TRUE,NA
+"503","ftdif",TRUE,TRUE,NA
+"504","ppaph",TRUE,TRUE,NA
+"505","ppaphif",TRUE,TRUE,NA
+"506","pnaph",TRUE,TRUE,NA
+"507","semdeman",TRUE,TRUE,NA
+"508","semdemag",TRUE,TRUE,NA
+"509","ppaothr",TRUE,TRUE,NA
+"510","psp",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — primary supranuclear palsy (PSP)"
+"511","pspif",TRUE,TRUE,NA
+"512","cort",TRUE,TRUE,NA
+"513","cortif",TRUE,TRUE,NA
+"514","hunt",TRUE,TRUE,NA
+"515","huntif",TRUE,TRUE,NA
+"516","prion",TRUE,TRUE,NA
+"517","prionif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Prion disease (CJD, other)"
+"518","meds",TRUE,TRUE,NA
+"519","medsif",TRUE,TRUE,NA
+"520","dysill",TRUE,TRUE,NA
+"521","dysillif",TRUE,TRUE,NA
+"522","dep",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Depression"
+"523","depif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Depression"
+"524","othpsy",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Other psychiatric disease"
+"525","othpsyif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Other psychiatric disease"
+"526","downs",TRUE,TRUE,NA
+"527","downsif",TRUE,TRUE,NA
+"528","park",TRUE,TRUE,"Parkinson’s disease present"
+"529","parkif",TRUE,TRUE,NA
+"530","stroke",TRUE,TRUE,NA
+"531","strokif",TRUE,TRUE,NA
+"532","hyceph",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Normal-pressure hydrocephalus (NPH)"
+"533","hycephif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Normal-pressure hydrocephalus (NPH)"
+"534","brninj",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Traumatic brain injury (TBI)"
+"535","brninjif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Traumatic brain injury (TBI)"
+"536","neop",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — CNS neoplasm"
+"537","neopif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — CNS neoplasm"
+"538","cogoth",TRUE,TRUE,NA
+"539","cogothif",TRUE,TRUE,NA
+"540","cogothx",TRUE,TRUE,NA
+"541","cogoth2",TRUE,TRUE,NA
+"542","cogoth2f",TRUE,TRUE,NA
+"543","cogoth2x",TRUE,TRUE,NA
+"544","cogoth3",TRUE,TRUE,NA
+"545","cogoth3f",TRUE,TRUE,NA
+"546","cogoth3x",TRUE,TRUE,NA
+"547","sex",TRUE,TRUE,"Subject’s sex"
+"548","educ",TRUE,TRUE,"Years of education"
+"549","race",TRUE,TRUE,"Race"
+"550","hispanic",TRUE,TRUE,"Hispanic/Latino ethnicity"
+"551","primlang",TRUE,TRUE,"Primary language"
+"552","sex",TRUE,TRUE,"Subject’s sex"
+"553","hispanic",TRUE,TRUE,"Hispanic/Latino ethnicity"
+"554","race",TRUE,TRUE,"Race"
+"555","primlang",TRUE,TRUE,"Primary language"
+"556","educ",TRUE,TRUE,"Years of education"
+"557","decage",TRUE,TRUE,"Based on clinician’s assessment, at what age did the cognitive decline begin?"
+"558","normcog",TRUE,TRUE,"Normal cognition and behavior"
+"559","demented",TRUE,TRUE,"Met criteria for dementia"
+"560","mciamem",TRUE,TRUE,NA
+"561","impnomci",TRUE,TRUE,"Cognitively impaired, not MCI"
+"562","probad",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Probable Alzheimer’s disease"
+"563","possad",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Possible Alzheimer’s disease"
+"564","dlb",TRUE,TRUE,NA
+"565","vasc",TRUE,TRUE,NA
+"566","ftd",TRUE,TRUE,NA
+"567","park",TRUE,TRUE,"Parkinson’s disease present"
+"568","stroke",TRUE,TRUE,NA
+"569","brninj",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Traumatic brain injury (TBI)"
+"570","alcdem",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Cognitive impairment due to alcohol abuse"
+"571","alcdemif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Alcohol abuse"
+"572","brninjif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Traumatic brain injury (TBI)"
+"573","cogoth",TRUE,TRUE,NA
+"574","cogoth2",TRUE,TRUE,NA
+"575","cogoth3",TRUE,TRUE,NA
+"576","cogoth2f",TRUE,TRUE,NA
+"577","cogoth2x",TRUE,TRUE,NA
+"578","cogoth3f",TRUE,TRUE,NA
+"579","cogoth3x",TRUE,TRUE,NA
+"580","cogothif",TRUE,TRUE,NA
+"581","cogothx",TRUE,TRUE,NA
+"582","cort",TRUE,TRUE,NA
+"583","cortif",TRUE,TRUE,NA
+"584","demun",TRUE,TRUE,NA
+"585","demunif",TRUE,TRUE,NA
+"586","dep",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Depression"
+"587","depif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Depression"
+"588","dlbif",TRUE,TRUE,NA
+"589","downs",TRUE,TRUE,NA
+"590","downsif",TRUE,TRUE,NA
+"591","dysill",TRUE,TRUE,NA
+"592","dysillif",TRUE,TRUE,NA
+"593","ftdif",TRUE,TRUE,NA
+"594","hunt",TRUE,TRUE,NA
+"595","huntif",TRUE,TRUE,NA
+"596","hyceph",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Normal-pressure hydrocephalus (NPH)"
+"597","hycephif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Normal-pressure hydrocephalus (NPH)"
+"598","mciaplus",TRUE,TRUE,NA
+"599","mcinon1",TRUE,TRUE,NA
+"600","mcinon2",TRUE,TRUE,NA
+"601","meds",TRUE,TRUE,NA
+"602","medsif",TRUE,TRUE,NA
+"603","neop",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — CNS neoplasm"
+"604","neopif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — CNS neoplasm"
+"605","othpsy",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — Other psychiatric disease"
+"606","othpsyif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Other psychiatric disease"
+"607","parkif",TRUE,TRUE,NA
+"608","pnaph",TRUE,TRUE,NA
+"609","possadif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Possible Alzheimer’s disease"
+"610","ppaothr",TRUE,TRUE,NA
+"611","ppaph",TRUE,TRUE,NA
+"612","ppaphif",TRUE,TRUE,NA
+"613","prion",TRUE,TRUE,NA
+"614","prionif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Prion disease (CJD, other)"
+"615","probadif",TRUE,TRUE,"Primary, contributing, or non- contributing cause of cognitive impairment — Probable Alzheimer’s disease"
+"616","psp",TRUE,TRUE,"Presumptive etiologic diagnosis of the cognitive disorder — primary supranuclear palsy (PSP)"
+"617","pspif",TRUE,TRUE,NA
+"618","semdemag",TRUE,TRUE,NA
+"619","semdeman",TRUE,TRUE,NA
+"620","strokif",TRUE,TRUE,NA
+"621","vascif",TRUE,TRUE,NA
+"622","vascps",TRUE,TRUE,NA
+"623","vascpsif",TRUE,TRUE,NA
+"624","whodiddx",TRUE,TRUE,"Who did diagnosis"

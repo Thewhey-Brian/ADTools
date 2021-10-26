@@ -1,0 +1,96 @@
+---
+title: "Files_Download"
+author: "Xinyu Guo"
+date: "8/26/2021"
+output: html_document
+---
+
+```{r}
+library("tidyverse")
+library("RSelenium")
+library("wdman")
+```
+
+```{r}
+adni_table <- read.csv("https://raw.githubusercontent.com/Thewhey-Brian/ADNI_Tools/master/adni_table.csv", header = T)[, 1:4]
+adni_table <- adni_table %>% filter(type != "")
+```
+
+```{r}
+email_key <- "xguo42@jh.edu"
+pw_key <- "Gxy@1202!"
+download_path <- "/Users/xinyuguo/Desktop/ADNI"
+```
+
+```{r}
+fprof <- makeFirefoxProfile(list(browser.download.folderList = 2, 
+                                 browser.download.manager.showWhenStarting = FALSE, 
+                                 browser.helperApps.neverAsk.saveToDisk="text/csv", 
+                                 browser.download.dir = download_path))
+rD <- rsDriver(browser = "chrome", 
+               verbose = FALSE, 
+               extraCapabilities = fprof)
+mybrowser <- rD$client
+mybrowser$navigate("https://ida.loni.usc.edu/pages/access/studyData.jsp?categoryId=12")
+email <- mybrowser$findElement(using = "name", value = "userEmail")
+pw <- mybrowser$findElement(using = "name", value = "userPassword")
+email$sendKeysToElement(list(email_key))
+pw$sendKeysToElement(list(pw_key, "\uE007"))
+
+PROJECTS <- mybrowser$findElement(using = "link text", value = "PROJECTS")
+PROJECTS$clickElement()
+ADNI <- mybrowser$findElement(using = "link text", value = "ADNI")
+ADNI$clickElement()
+DOWNLOAD <- mybrowser$findElement(using = "link text", value = "DOWNLOAD")
+DOWNLOAD$clickElement()
+Study_Data <- mybrowser$findElement(using = "link text", value = "Study Data")
+Study_Data$clickElement()
+ygtvlabelel48 <- mybrowser$findElement(using = "id", value = "ygtvlabelel48")
+ygtvlabelel48$clickElement()
+
+name = adni_table$file_label[1]
+dld <- mybrowser$findElement(using = "link text", value = name)
+dld$clickElement()
+
+for (name in adni_table$file_label) {
+  dld <- mybrowser$findElement(using = "link text", value = name)
+  dld$clickElement()
+  Sys.sleep(x)
+  close_button <- mybrowser$findElement(using = "class name", value = "preparing-download-close-btn")
+  close_button$clickElement()
+}
+
+
+
+
+
+rD$server$stop()
+
+
+```
+
+```{r}
+rD$server$stop()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

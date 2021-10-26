@@ -1,0 +1,122 @@
+---
+title: "ADNI_cog"
+author: "Xinyu Guo"
+date: "7/9/2021"
+output: html_document
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(skimr)
+library(vistime)
+library(kableExtra)
+library(ggplot2)
+library(plotly)
+library(ggplotify)
+```
+
+# Load reference data
+```{r}
+pts <- read.csv("../data_patients.csv")[, -1] %>% 
+  select(-c("EXAMDATE", "USERDATE", "USERDATE2", "COLPROT", 
+            "ORIGPROT", "DX_bl", "DX", "EXAMDATE_bl"))
+```
+
+## Get COG data
+```{r}
+loc <- "/Users/xinyuguo/OneDrive - Johns Hopkins/AD Biomarker/AD_Tools/ADTool/ADNI_data/COG"
+files <- list.files(loc, pattern = ".csv", full.names = T)
+dicts <- files[grep("dict", files, ignore.case = T)]
+datas <- files[-grep("dict", files, ignore.case = T)]
+list_data <- c()
+for (tbl in datas) {
+  tem_data <- read.csv(tbl, header = T)
+  name_data <- gsub(".csv", "", basename(tbl))
+  assign(name_data, tem_data)
+  list_data <- c(list_data, name_data)
+}
+cat(list_data)
+```
+
+There are total 9 files. Among these files, ADAS_ADNI1 and ADASSCORES seem similar but they store different info.
+
+# data cleaning
+```{r}
+ADAS_ADNI1 <- ADAS_ADNI1 %>% 
+  select(-c("ID", "SITEID", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(EXAMDATE_ADAS_ADNI1 = EXAMDATE)
+ADASSCORES <- ADASSCORES %>% 
+  select(-c("ID", "SITEID", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(EXAMDATE_ADASSCORES = EXAMDATE)
+ADAS_ADNIGO23 <- ADAS_ADNIGO23 %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp", "WORDLIST")) %>% 
+  rename(VISCODE = VISCODE2)
+CDR <- CDR %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(VISCODE = VISCODE2, EXAMDATE_CDR = EXAMDATE)
+ECOGPT <- ECOGPT %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(VISCODE = VISCODE2)
+FAQ <- FAQ %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(VISCODE = VISCODE2, EXAMDATE_FAQ = EXAMDATE)
+MMSE <- MMSE %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp", "WORDLIST")) %>% 
+  rename(VISCODE = VISCODE2, EXAMDATE_MMSE = EXAMDATE)
+NEUROBAT <- NEUROBAT %>% 
+  select(-c("Phase", "ID", "SITEID", "VISCODE", "USERDATE", "USERDATE2", "update_stamp")) %>% 
+  rename(VISCODE = VISCODE2, EXAMDATE_NEUROBAT = EXAMDATE)
+UWNPSYCHSUM_03_09_21 <- UWNPSYCHSUM_03_09_21 %>% 
+  select(-c("VISCODE", "USERDATE", "PHASE")) %>% 
+  rename(VISCODE = VISCODE2, EXAMDATE_UWNPSYCHSUM_03_09_21 = examdate)
+```
+
+# Merge Data
+```{r}
+# adni_cog <- pts %>%
+#   select(Phase, RID, VISCODE) %>% 
+#   left_join(ADAS_ADNI1, by = c("RID", "VISCODE"), suffix = c("", "_ADAS_ADNI1")) %>% 
+#   left_join(ADASSCORES, by = c("RID", "VISCODE"), suffix = c("", "_ADASSCORES")) %>% 
+#   left_join(ADAS_ADNIGO23, by = c("RID", "VISCODE"), suffix = c("", "_ADAS_ADNIGO23")) %>% 
+#   left_join(CDR, by = c("RID", "VISCODE"), suffix = c("", "_CDR")) %>% 
+#   left_join(ECOGPT, by = c("RID", "VISCODE"), suffix = c("", "_ECOGPT")) %>% 
+#   left_join(FAQ, by = c("RID", "VISCODE"), suffix = c("", "_FAQ")) %>% 
+#   left_join(MMSE, by = c("RID", "VISCODE"), suffix = c("", "_MMSE")) %>% 
+#   left_join(NEUROBAT, by = c("RID", "VISCODE"), suffix = c("", "_NEUROBAT")) %>% 
+#   left_join(UWNPSYCHSUM_03_09_21, by = c("RID", "VISCODE"), suffix = c("", "_UWNPSYCHSUM_03_09_21"))
+
+adni_cog <- pts %>%
+  select(Phase, RID, VISCODE) %>% 
+  left_join(ADAS_ADNI1, by = c("RID", "VISCODE")) %>% 
+  left_join(ADASSCORES, by = c("RID", "VISCODE")) %>% 
+  left_join(ADAS_ADNIGO23, by = c("RID", "VISCODE")) %>% 
+  left_join(CDR, by = c("RID", "VISCODE")) %>% 
+  left_join(ECOGPT, by = c("RID", "VISCODE")) %>% 
+  left_join(FAQ, by = c("RID", "VISCODE")) %>% 
+  left_join(MMSE, by = c("RID", "VISCODE")) %>% 
+  left_join(NEUROBAT, by = c("RID", "VISCODE")) %>% 
+  left_join(UWNPSYCHSUM_03_09_21, by = c("RID", "VISCODE"))
+```
+
+# Creating the variables dictionary 
+```{r}
+cog_file_list <- c("ADAS_ADNI1", "ADASSCORES", "ADAS_ADNIGO23", "CDR", "ECOGPT", "FAQ", "MMSE", "NEUROBAT", "UWNPSYCHSUM_03_09_21")
+vars_cog <- data.frame()
+for (file in cog_file_list) {
+  dat <- eval(as.name(file))
+  var_names <- names(dat)
+  n <- length(var_names)
+  tem <- data.frame(Source      = rep("ADNI", n), 
+                    Type        = rep("COG", n), 
+                    File        = rep(file, n), 
+                    Vatiables   = var_names, 
+                    Inter_name  = rep(NA, n), 
+                    Description = rep(NA, n))
+  vars_cog <- rbind(vars_cog, tem)
+}
+```
+
+
+
+
+

@@ -1,0 +1,689 @@
+---
+title: "ADNI_Imaging"
+author: "Xinyu Guo"
+date: "6/28/2021"
+output: html_document
+---
+
+```{r, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(skimr)
+library(vistime)
+library(kableExtra)
+library(ggplot2)
+library(plotly)
+library(ggplotify)
+library(lubridate)
+```
+
+# Load reference data
+```{r}
+pts <- read.csv("../data_patients.csv")[, -1] %>% 
+  select(Phase, RID, VISCODE) %>% 
+  filter(!(Phase == "ADNIGO" & VISCODE == "sc"))
+```
+
+## Get MR data
+```{r}
+loc <- "/Users/xinyuguo/OneDrive - Johns Hopkins/AD Biomarker/AD_Tools/ADTool/ADNI_data/Imaging/MR/"
+files <- list.files(loc, pattern = ".csv", full.names = T)
+dicts <- files[grep("dict", files, ignore.case = T)]
+datas <- files[-grep("dict", files, ignore.case = T)]
+list_data <- c()
+for (tbl in datas) {
+  tem_data <- read.csv(tbl, header = T)
+  name_data <- gsub(".csv", "", basename(tbl))
+  assign(name_data, tem_data)
+  list_data <- c(list_data, name_data)
+}
+cat(list_data)
+```
+
+Some have both exam date and run date, some just have exam date.
+
+## Get PET data
+```{r}
+loc <- "/Users/xinyuguo/OneDrive - Johns Hopkins/AD Biomarker/AD_Tools/ADTool/ADNI_data/Imaging/PET/"
+files <- list.files(loc, pattern = ".csv", full.names = T)
+dicts <- files[grep("dict", files, ignore.case = T)]
+datas <- files[-grep("dict", files, ignore.case = T)]
+list_data <- c()
+for (tbl in datas) {
+  tem_data <- read.csv(tbl, header = T)
+  name_data <- gsub(".csv", "", basename(tbl))
+  assign(name_data, tem_data)
+  list_data <- c(list_data, name_data)
+}
+cat(list_data)
+```
+
+# plots MR
+```{r}
+ADNI_DTIROI_10_03_19_plot <- pts %>% 
+  left_join(ADNI_DTIROI_10_03_19 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "ADNI_DTIROI_10_03_19", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+ADNI_UCD_WMH_04_30_19_plot <- pts %>% 
+  left_join(ADNI_UCD_WMH_04_30_19 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "ADNI_UCD_WMH_04_30_19", 
+         Date = EXAMDATE) %>%  
+  select(Source, RID, Phase, VISCODE, Date)
+
+ADNI_UCD_WMH_09_01_20_plot <- pts %>% 
+  left_join(ADNI_UCD_WMH_09_01_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "ADNI_UCD_WMH_09_01_20", 
+         Date = EXAMDATE) %>%  
+  select(Source, RID, Phase, VISCODE, Date)
+
+BSI_plot <- pts %>% 
+  left_join(BSI, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BSI", 
+         Date = EXAMDATE) %>%  
+  select(Source, RID, Phase, VISCODE, Date)
+
+FOXLABBSI_03_27_20_plot <- pts %>% 
+  left_join(FOXLABBSI_03_27_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "FOXLABBSI_03_27_20", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+MAYOADIRL_MRI_FMRI_11_07_17_plot <- pts %>% 
+  left_join(MAYOADIRL_MRI_FMRI_11_07_17 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(SCANDATE)) %>% 
+  mutate(Source = "MAYOADIRL_MRI_FMRI_11_07_17", 
+         Date = SCANDATE) %>%  # have both scan and run date
+  select(Source, RID, Phase, VISCODE, Date)
+  
+MAYOADIRL_MRI_FMRI_NFQ_01_29_21_plot <- pts %>% 
+  left_join(MAYOADIRL_MRI_FMRI_NFQ_01_29_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(SCANDATE)) %>% 
+  mutate(Source = "MAYOADIRL_MRI_FMRI_NFQ_01_29_21", 
+         Date = format(parse_date_time(SCANDATE, orders = "mdy"))) %>%  # have both scan and run date 
+  select(Source, RID, Phase, VISCODE, Date)
+
+MAYOADIRL_MRI_TBMSYN_01_29_21_plot <- pts %>% 
+  left_join(MAYOADIRL_MRI_TBMSYN_01_29_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "MAYOADIRL_MRI_TBMSYN_01_29_21", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+MRI_INFARCTS_01_29_21_plot <- pts %>% 
+  left_join(MRI_INFARCTS_01_29_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(MRI.DATE2)) %>% 
+  mutate(Source = "MRI_INFARCTS_01_29_21", 
+         Date = MRI.DATE2) %>%  # have special date
+  select(Source, RID, Phase, VISCODE, Date)
+
+TBM_08_20_15_plot <- pts %>% 
+  left_join(TBM_08_20_15, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "TBM_08_20_15", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+  
+TCV_plot <- pts %>% 
+  left_join(TCV, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "TCV", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCD_ADNI1_WMH_plot <- pts %>% 
+  left_join(UCD_ADNI1_WMH, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCD_ADNI1_WMH", 
+         Date = EXAMDATE) %>%  # have only exam date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFASLFS_11_02_15_V2_plot <- pts %>% 
+  left_join(UCSFASLFS_11_02_15_V2 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFASLFS_11_02_15_V2", 
+         Date = EXAMDATE) %>%  # have both scan and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFASLFSCBF_03_15_2021_plot <- pts %>% 
+  left_join(UCSFASLFSCBF_03_15_2021 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFASLFSCBF_03_15_2021", 
+         Date = EXAMDATE) %>%  # have both scan and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFATRPHY_plot <- pts %>% 
+  left_join(UCSFATRPHY %>% 
+              select(-VISCODE1) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE2)) %>% 
+  mutate(Source = "UCSFATRPHY", 
+         Date = EXAMDATE2) %>%  # have both scan and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSL_02_01_16_plot <- pts %>% 
+  left_join(UCSFFSL_02_01_16 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSL_02_01_16", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+  
+UCSFFSL51ALL_08_01_16_plot <- pts %>% 
+  left_join(UCSFFSL51ALL_08_01_16 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSL51ALL_08_01_16", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSL51Y1_08_01_16_plot <- pts %>% 
+  left_join(UCSFFSL51Y1_08_01_16 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSL51Y1_08_01_16", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSX_11_02_15_plot <- pts %>% 
+  left_join(UCSFFSX_11_02_15, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSX_11_02_15", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSX51_11_08_19_plot <- pts %>% 
+  left_join(UCSFFSL51ALL_08_01_16 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSX51_11_08_19", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSX51_ADNI1_3T_02_01_16_plot <- pts %>% 
+  left_join(UCSFFSX51_ADNI1_3T_02_01_16, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSX51_ADNI1_3T_02_01_16", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSX51FINAL_11_08_19_plot <- pts %>% 
+  left_join(UCSFFSX51FINAL_11_08_19 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSX51FINAL_11_08_19", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFFSX6_03_02_21_plot <- pts %>% 
+  left_join(UCSFFSX6_03_02_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFFSX6_03_02_21", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCSFSNTVOL_plot <- pts %>% 
+  left_join(UCSFSNTVOL, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCSFSNTVOL", 
+         Date = EXAMDATE) %>%  # have both exam and SNT date
+  select(Source, RID, Phase, VISCODE, Date)
+
+```
+
+```{r}
+ids_mr <- rbind(ADNI_DTIROI_10_03_19_plot,
+                ADNI_UCD_WMH_04_30_19_plot,
+                ADNI_UCD_WMH_09_01_20_plot,
+                BSI_plot, FOXLABBSI_03_27_20_plot,
+                MAYOADIRL_MRI_FMRI_11_07_17_plot,
+                MAYOADIRL_MRI_FMRI_NFQ_01_29_21_plot,
+                MAYOADIRL_MRI_TBMSYN_01_29_21_plot,
+                MRI_INFARCTS_01_29_21_plot, 
+                TBM_08_20_15_plot, TCV_plot,
+                UCD_ADNI1_WMH_plot,
+                UCSFASLFS_11_02_15_V2_plot,
+                UCSFASLFSCBF_03_15_2021_plot,
+                UCSFATRPHY_plot, UCSFFSL_02_01_16_plot,
+                UCSFFSL51ALL_08_01_16_plot,
+                UCSFFSL51Y1_08_01_16_plot,
+                UCSFFSX_11_02_15_plot,
+                UCSFFSX51FINAL_11_08_19_plot,
+                UCSFFSX51_11_08_19_plot, 
+                UCSFFSX51_ADNI1_3T_02_01_16_plot,
+                UCSFFSX6_03_02_21_plot, UCSFSNTVOL_plot)
+p_times <- ggplot(data = ids_mr) + 
+  theme_bw() + 
+  geom_jitter(aes(x = Date, 
+                  y = Source, 
+                  color = Phase, 
+                  text = paste(" RID:", RID, 
+                               "<br> Source:", Source, 
+                               "<br> Phase:", Phase, 
+                               "<br> VISCODE:", VISCODE, 
+                               "<br> Date:", Date)), 
+              alpha = 0.6, height = 0.3, width = 0.2) + 
+  scale_x_discrete(breaks = c("2005-11-10", "2010-03-26", 
+                              "2011-09-16", "2016-09-26", 
+                              "2019-02-20", "2020-06-15")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 0.5, 
+                                   hjust=1))
+#ggplotly(p_times, tooltip="text")
+p_times
+```
+
+# plots PET
+```{r}
+BAINMRC_plot <- pts %>% 
+  left_join(BAINMRC, by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BAINMRC", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date)
+
+BAIPETNMRC_04_12_18_plot <- pts %>% 
+  left_join(BAIPETNMRC_04_12_18 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BAIPETNMRC_04_12_18", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+BAIPETNMRCAV45_10_23_20_plot <- pts %>% 
+  left_join(BAIPETNMRCAV45_10_23_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BAIPETNMRCAV45_10_23_20", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+BAIPETNMRCFDG_12_11_20_plot <- pts %>% 
+  left_join(BAIPETNMRCFDG_12_11_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BAIPETNMRCFDG_12_11_20", 
+         Date = format(parse_date_time(EXAMDATE, orders = "mdy"))) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+BAIPETNMRCFTP_03_03_20_plot <- pts %>% 
+  left_join(BAIPETNMRCFTP_03_03_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "BAIPETNMRCFTP_03_03_20", 
+         Date = EXAMDATE) %>%  # have both exam and run date
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCBERKELEYAV1451_01_14_21_plot <- pts %>% 
+  left_join(UCBERKELEYAV1451_01_14_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCBERKELEYAV1451_01_14_21", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date)
+
+UCBERKELEYAV1451_PVC_01_15_21_plot <- pts %>% 
+  left_join(UCBERKELEYAV1451_PVC_01_15_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCBERKELEYAV1451_PVC_01_15_21", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date) 
+
+UCBERKELEYAV45_01_14_21_plot <- pts %>% 
+  left_join(UCBERKELEYAV45_01_14_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCBERKELEYAV45_01_14_21", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date) 
+
+UCBERKELEYFBB_01_14_21_plot <- pts %>% 
+  left_join(UCBERKELEYFBB_01_14_21 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCBERKELEYFBB_01_14_21", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date) 
+
+UCBERKELEYFDG_05_28_20_plot <- pts %>% 
+  left_join(UCBERKELEYFDG_05_28_20 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UCBERKELEYFDG_05_28_20", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date) 
+
+UUCACIR_07_18_16_plot <- pts %>% 
+  left_join(UUCACIR_07_18_16 %>% 
+              select(-VISCODE) %>% 
+              rename(VISCODE = VISCODE2), by = c("RID", "VISCODE")) %>% 
+  filter(!is.na(EXAMDATE)) %>% 
+  mutate(Source = "UUCACIR_07_18_16", 
+         Date = EXAMDATE) %>%  # have exam date only
+  select(Source, RID, Phase, VISCODE, Date) 
+```
+
+```{r}
+ids_pet <- rbind(BAINMRC_plot,
+                 BAIPETNMRC_04_12_18_plot,
+                 BAIPETNMRCAV45_10_23_20_plot,
+                 BAIPETNMRCFDG_12_11_20_plot,
+                 BAIPETNMRCFTP_03_03_20_plot,
+                 UCBERKELEYAV1451_01_14_21_plot,
+                 UCBERKELEYAV1451_PVC_01_15_21_plot,
+                 UCBERKELEYAV45_01_14_21_plot,
+                 UCBERKELEYFBB_01_14_21_plot,
+                 UCBERKELEYFDG_05_28_20_plot,
+                 UUCACIR_07_18_16_plot)
+p_times <- ggplot(data = ids_pet) + 
+  theme_bw() + 
+  geom_jitter(aes(x = Date, 
+                  y = Source, 
+                  color = Phase, 
+                  text = paste(" RID:", RID, 
+                               "<br> Source:", Source, 
+                               "<br> Phase:", Phase, 
+                               "<br> VISCODE:", VISCODE, 
+                               "<br> Date:", Date)), 
+              alpha = 0.6, height = 0.3, width = 0.2) + 
+  scale_x_discrete(breaks = c("2005-11-10", "2010-03-26", 
+                              "2011-09-16", "2016-09-26", 
+                              "2019-02-20", "2020-06-15")) + 
+  theme(axis.text.x = element_text(angle = 45, 
+                                   vjust = 0.5, 
+                                   hjust=1))
+# ggplotly(p_times, tooltip="text")
+p_times
+```
+
+## Merge data
+
+ADASSCORES ADNI_DTIROI_10_03_19 ADNI_UCD_WMH_04_30_19 ADNI_UCD_WMH_09_01_20 BSI FOXLABBSI_03_27_20 MAYOADIRL_MRI_FMRI_11_07_17 MAYOADIRL_MRI_FMRI_NFQ_01_29_21 MAYOADIRL_MRI_TBMSYN_01_29_21 MRI_INFARCTS_01_29_21 TBM_08_20_15 TCV UCD_ADNI1_WMH UCSFASLFS_11_02_15_V2 UCSFASLFSCBF_03_15_2021 UCSFATRPHY UCSFFSL_02_01_16 UCSFFSL51ALL_08_01_16 UCSFFSL51Y1_08_01_16 UCSFFSX_11_02_15 UCSFFSX51_11_08_19 UCSFFSX51_ADNI1_3T_02_01_16 UCSFFSX51FINAL_11_08_19 UCSFFSX6_03_02_21 UCSFSNTVOL
+
+BAINMRC BAIPETNMRC_04_12_18 BAIPETNMRCAV45_10_23_20 BAIPETNMRCFDG_12_11_20 BAIPETNMRCFTP_03_03_20 UCBERKELEYAV1451_01_14_21 UCBERKELEYAV1451_PVC_01_15_21 UCBERKELEYAV45_01_14_21 UCBERKELEYFBB_01_14_21 UCBERKELEYFDG_05_28_20 UUCACIR_07_18_16
+
+```{r}
+## reference time
+dat_all_mr <- ids_mr %>% 
+  select(RID, VISCODE, Date) %>% 
+  distinct() %>% 
+  arrange(RID, Date)
+## clean each data
+FOXLABBSI_03_27_20_merge <- FOXLABBSI_03_27_20 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(STATUS, VERSION, RUNDATE, update_stamp, ORIGPROT, COLPROT, LONIUID, LONIUID_BASE))
+MAYOADIRL_MRI_FMRI_11_07_17_merge <- MAYOADIRL_MRI_FMRI_11_07_17 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = SCANDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(STATUS, VERSION, RUNDATE, update_stamp))
+MAYOADIRL_MRI_FMRI_NFQ_01_29_21_merge <- MAYOADIRL_MRI_FMRI_NFQ_01_29_21 %>% 
+  select(-VISCODE) %>% 
+  mutate(Date = format(parse_date_time(SCANDATE, orders = "mdy"))) %>% 
+  rename(VISCODE = VISCODE2) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, SCANDATE, update_stamp))
+MAYOADIRL_MRI_TBMSYN_01_29_21_merge <- MAYOADIRL_MRI_TBMSYN_01_29_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(STATUS, VERSION, RUNDATE, PHASE, VISCODE2BL, VISCODEBL, PHASEBL, DXBL, DX, EXAMDATEBL, update_stamp))
+MRI_INFARCTS_01_29_21_merge <- MRI_INFARCTS_01_29_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = MRI.DATE2) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(MRI.DATE1, ANALYZE.DATE, update_stamp))
+TCV_merge <- TCV %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(RUNDATE, STATUS, LONIUID, VERSION, update_stamp))
+UCD_ADNI1_WMH_merge <- UCD_ADNI1_WMH %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(update_stamp))
+ADNI_UCD_WMH_09_01_20_merge <- ADNI_UCD_WMH_09_01_20 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, update_stamp, STATUS))
+BSI_merge <- BSI %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(ID, SITEID, IMAGEUID, RECNO, update_stamp))
+ADNI_DTIROI_10_03_19_merge <- ADNI_DTIROI_10_03_19 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(VERSION, VISNAME, VISITNO, LONIUID_1, LONIUID_2, LONIUID_3, LONIUID_4, RUNDATE, update_stamp, STATUS))
+UCSFFSX51_ADNI1_3T_02_01_16_merge <- UCSFFSX51_ADNI1_3T_02_01_16 %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(VERSION, LONISID, LONIUID, IMAGEUID, RUNDATE, STATUS, update_stamp))
+UCSFASLFS_11_02_15_V2_merge <- UCSFASLFS_11_02_15_V2 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, VERSION, LONIUID, IMAGEUID, RUNDATE, update_stamp))
+UCSFASLFSCBF_03_15_2021_merge <- UCSFASLFSCBF_03_15_2021 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, VERSION, LONIUID, IMAGEUID, RUNDATE, update_stamp))
+UCSFFSX51_11_08_19_merge <- UCSFFSX51_11_08_19 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, VERSION, LONIUID, LONISID, IMAGEUID, IMAGETYPE, STATUS, RUNDATE, update_stamp))
+UCSFFSX_11_02_15_merge <- UCSFFSX_11_02_15 %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(VERSION, LONISID, LONIUID, IMAGEUID, RUNDATE, STATUS, update_stamp))
+UCSFATRPHY_merge <- UCSFATRPHY %>% 
+  select(-VISCODE1) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE2) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(RECNO, SITEID, EXAMDATE1, IMAGEUID1, IMAGEUID2, update_stamp))
+UCSFSNTVOL_merge <- UCSFSNTVOL %>% 
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(SITEID, USERDATE, LONISID, LONIUID, IMAGEUID, RECNO, update_stamp))
+UCSFFSX6_03_02_21_merge <- UCSFFSX6_03_02_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, VERSION, IMAGEUID, LONIUID, STATUS, RUNDATE, update_stamp))
+TBM_08_20_15_merge <- TBM_08_20_15 %>%
+  rename(Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(COLPROT, VERSION, IMAGEUID_1, IMAGEUID_2, RUNDATE, STATUS, update_stamp))
+
+adni_img_mri <- dat_all_mr %>% 
+  left_join(FOXLABBSI_03_27_20_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(MAYOADIRL_MRI_FMRI_11_07_17_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(MAYOADIRL_MRI_FMRI_NFQ_01_29_21_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(MAYOADIRL_MRI_TBMSYN_01_29_21_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(MRI_INFARCTS_01_29_21_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(TCV_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCD_ADNI1_WMH_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(ADNI_UCD_WMH_09_01_20_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(BSI_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(ADNI_DTIROI_10_03_19_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFFSX51_ADNI1_3T_02_01_16_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFASLFS_11_02_15_V2_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFASLFSCBF_03_15_2021_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFFSX51_11_08_19_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFFSX_11_02_15_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFATRPHY_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFSNTVOL_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(UCSFFSX6_03_02_21_merge, by = c("RID", "VISCODE", "Date")) %>% 
+  left_join(TBM_08_20_15_merge, by = c("RID", "VISCODE", "Date")) 
+
+# adni_img_mri <- dat_all_mr %>% 
+#   left_join(FOXLABBSI_03_27_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_FOXLABBSI_03_27_20")) %>% 
+#   left_join(MAYOADIRL_MRI_FMRI_11_07_17_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_MAYOADIRL_MRI_FMRI_11_07_17")) %>% 
+#   left_join(MAYOADIRL_MRI_FMRI_NFQ_01_29_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_MAYOADIRL_MRI_FMRI_NFQ_01_29_21")) %>% 
+#   left_join(MAYOADIRL_MRI_TBMSYN_01_29_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_MAYOADIRL_MRI_TBMSYN_01_29_21")) %>% 
+#   left_join(MRI_INFARCTS_01_29_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_MRI_INFARCTS_01_29_21")) %>% 
+#   left_join(TCV_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_TCV")) %>% 
+#   left_join(UCD_ADNI1_WMH_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCD_ADNI1_WMH")) %>% 
+#   left_join(ADNI_UCD_WMH_09_01_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_ADNI_UCD_WMH_09_01_20")) %>% 
+#   left_join(BSI_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_BSI")) %>% 
+#   left_join(ADNI_DTIROI_10_03_19_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_ADNI_DTIROI_10_03_19")) %>% 
+#   left_join(UCSFFSX51_ADNI1_3T_02_01_16_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFFSX51_ADNI1_3T_02_01_16")) %>% 
+#   left_join(UCSFASLFS_11_02_15_V2_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFASLFS_11_02_15_V2")) %>% 
+#   left_join(UCSFASLFSCBF_03_15_2021_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFASLFSCBF_03_15_2021")) %>% 
+#   left_join(UCSFFSX51_11_08_19_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFFSX51_11_08_19")) %>% 
+#   left_join(UCSFFSX_11_02_15_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFFSX_11_02_15")) %>% 
+#   left_join(UCSFATRPHY_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFATRPHY")) %>% 
+#   left_join(UCSFSNTVOL_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFSNTVOL")) %>% 
+#   left_join(UCSFFSX6_03_02_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCSFFSX6_03_02_21")) %>% 
+#   left_join(TBM_08_20_15_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_TBM_08_20_15")) 
+  
+```
+
+```{r}
+dat_all_pet <- ids_pet %>% 
+  select(RID, VISCODE, Date) %>% 
+  distinct() %>% 
+  arrange(RID, Date)
+BAIPETNMRC_04_12_18_merge <- BAIPETNMRC_04_12_18 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(VERSION, LONIUID, STATUS, RUNDATE, update_stamp))
+BAIPETNMRCAV45_10_23_20_merge <- BAIPETNMRCAV45_10_23_20 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(ORIGPROT, COLPROT, LONIUID, RUNDATE, STATUS, update_stamp))
+BAIPETNMRCFDG_12_11_20_merge <- BAIPETNMRCFDG_12_11_20 %>%
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(ORIGPROT, SCANDATE, LONIUID, RUNDATE, STATUS, update_stamp))
+BAIPETNMRCFTP_03_03_20_merge <- BAIPETNMRCFTP_03_03_20 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(ORIGPROT, COLPROT, LONIUID, RUNDATE, STATUS, update_stamp))
+UCBERKELEYAV1451_PVC_01_15_21_merge <- UCBERKELEYAV1451_PVC_01_15_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(update_stamp))
+UCBERKELEYAV45_01_14_21_merge <- UCBERKELEYAV45_01_14_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(update_stamp))
+UCBERKELEYFBB_01_14_21_merge <- UCBERKELEYFBB_01_14_21 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(update_stamp))
+UCBERKELEYFDG_05_28_20_merge <- UCBERKELEYFDG_05_28_20 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(update_stamp))
+UUCACIR_07_18_16_merge <- UUCACIR_07_18_16 %>% 
+  select(-VISCODE) %>% 
+  rename(VISCODE = VISCODE2, 
+         Date = EXAMDATE) %>% 
+  filter(!is.na(Date)) %>% 
+  select(-c(IMAGEUID, PETTYPE, update_stamp))
+
+adni_img_pet <- dat_all_pet %>% 
+  left_join(BAIPETNMRC_04_12_18_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_BAIPETNMRC_04_12_18")) %>% 
+  left_join(BAIPETNMRCAV45_10_23_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_BAIPETNMRCAV45_10_23_20")) %>% 
+  left_join(BAIPETNMRCFDG_12_11_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_BAIPETNMRCFDG_12_11_20")) %>% 
+  left_join(BAIPETNMRCFTP_03_03_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_BAIPETNMRCFTP_03_03_20")) %>% 
+  left_join(UCBERKELEYAV1451_PVC_01_15_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCBERKELEYAV1451_PVC_01_15_21")) %>% 
+  left_join(UCBERKELEYAV45_01_14_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCBERKELEYAV45_01_14_21")) %>% 
+  left_join(UCBERKELEYFBB_01_14_21_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCBERKELEYFBB_01_14_21")) %>% 
+  left_join(UCBERKELEYFDG_05_28_20_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UCBERKELEYFDG_05_28_20")) %>% 
+  left_join(UUCACIR_07_18_16_merge, by = c("RID", "VISCODE", "Date"), suffix = c("", "_UUCACIR_07_18_16"))
+  
+```
+ 
+# Creating the variables dictionary 
+```{r}
+imaging_file_list <- c("FOXLABBSI_03_27_20", "MAYOADIRL_MRI_FMRI_11_07_17", "MAYOADIRL_MRI_FMRI_NFQ_01_29_21", "MAYOADIRL_MRI_TBMSYN_01_29_21", "MRI_INFARCTS_01_29_21", "TCV", "UCD_ADNI1_WMH", "ADNI_UCD_WMH_09_01_20", "BSI", "ADNI_DTIROI_10_03_19", "UCSFFSX51_ADNI1_3T_02_01_16", "UCSFASLFS_11_02_15_V2", "UCSFASLFSCBF_03_15_2021", "UCSFFSX51_11_08_19", "UCSFFSX_11_02_15", 'UCSFATRPHY', "UCSFSNTVOL", 'UCSFFSX6_03_02_21', "TBM_08_20_15", "BAIPETNMRC_04_12_18", "BAIPETNMRCAV45_10_23_20", "BAIPETNMRCFDG_12_11_20", "BAIPETNMRCFTP_03_03_20", "UCBERKELEYAV1451_PVC_01_15_21", "UCBERKELEYAV45_01_14_21", "UCBERKELEYFBB_01_14_21", "UCBERKELEYFDG_05_28_20", "UUCACIR_07_18_16")
+vars_imaging <- data.frame()
+for (file in imaging_file_list) {
+  dat <- eval(as.name(file))
+  var_names <- names(dat)
+  n <- length(var_names)
+  tem <- data.frame(Source      = rep("ADNI", n), 
+                    Type        = rep("Imaging", n), 
+                    File        = rep(file, n), 
+                    Vatiables   = var_names, 
+                    Inter_name  = rep(NA, n), 
+                    Description = rep(NA, n))
+  vars_imaging <- rbind(vars_imaging, tem)
+}
+```
+

@@ -1,0 +1,249 @@
+Main Category,Subcategory,Item
+Assessments,Diagnosis,"Diagnosis and Symptoms Checklist [ADNI1,GO,2]"
+Assessments,Diagnosis,"Diagnostic Summary – Baseline Changes [ADNI1,GO,2,3]"
+Assessments,Diagnosis,"Diagnostic Summary [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,ADAS Sub-Scores and Total Scores [ADNI1]
+Assessments,Neuropsychological,Alzheimer’s Disease Assessment Scale (ADAS) [ADNI1]
+Assessments,Neuropsychological,"Alzheimer’s Disease Assessment Scale (ADAS) [ADNIGO,2,3]"
+Assessments,Neuropsychological,"Clinical Dementia Rating Scale (CDR) [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Cognitive Change Index [ADNI2,3]"
+Assessments,Neuropsychological,"Cogstate Battery Results [ADNI2,3]"
+Assessments,Neuropsychological,"Everyday Cognition – Participant Self Report [ADNIGO,2,3]"
+Assessments,Neuropsychological,"Everyday Cognition – Study Partner Report [ADNIGO,2,3]"
+Assessments,Neuropsychological,Financial Capacity Instrument Short Form (FCI-SF) [ADNI3]
+Assessments,Neuropsychological,"Functional Activities Questionnaire (FAQ) [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Geriatric Depression Scale (GDS) [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Item Level Data Dictionary (ADAS-Cog, ANART, MMSE, etc) [ADNI1]"
+Assessments,Neuropsychological,"Mini-Mental State Examination (MMSE) [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Modified Hachinski Ischemia Scale [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Montreal Cognitive Assessment (MoCA) [ADNIGO,2,3]"
+Assessments,Neuropsychological,"Neuropsychiatric Inventory (NPI) [ADNI2,3]"
+Assessments,Neuropsychological,"Neuropsychiatric Inventory Questionnaire (NPI-Q) [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"Neuropsychological Battery [ADNI1,GO,2,3]"
+Assessments,Neuropsychological,"UW – Neuropsych Summary Scores Dictionary [ADNI1,GO,2]"
+Assessments,Neuropsychological,"UW – Neuropsych Summary Scores [ADNI1,GO,2,3]"
+Biospecimen,Biosample Inventory,"Aliquot Count in the LDMS Database Dictionary [ADNI1,GO,2]"
+Biospecimen,Biosample Inventory,"Aliquot Count in the LDMS Database [ADNI1,GO,2]"
+Biospecimen,Biosample Inventory,"Residual Aliquot Count in the LDMS Database Dictionary [ADNIGO,2]"
+Biospecimen,Biosample Inventory,"Residual Aliquot Count in the LDMS Database [ADNIGO,2]"
+Biospecimen,Biospecimen Results,AD Metabolomics Consortium Barcelona Purines
+Biospecimen,Biospecimen Results,AD Metabolomics Consortium Barcelona Purines Dictionary
+Biospecimen,Biospecimen Results,AD Metabolomics Consortium Bile Acids
+Biospecimen,Biospecimen Results,AD Metabolomics Consortium Bile Acids Dictionary
+Biospecimen,Biospecimen Results,ADMC Duke Biocrates P180 Kit Flow injection analysis Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,"ADMC Duke Biocrates p180 Kit Flow injection analysis Dictionary [ADNIGO,2]"
+Biospecimen,Biospecimen Results,ADMC Duke Biocrates P180 Kit Flow injection analysis [ADNI1]
+Biospecimen,Biospecimen Results,"ADMC Duke Biocrates p180 Kit Flow injection analysis [ADNIGO,2]"
+Biospecimen,Biospecimen Results,ADMC Duke Biocrates P180 Kit Ultra Performance Liquid Chromatography Dictionary
+Biospecimen,Biospecimen Results,ADMC Duke Biocrates P180 Kit Ultra Performance Liquid Chromatography [ADNI1]
+Biospecimen,Biospecimen Results,"ADMC Duke p180 Ultra Performance Liquid Chromatography Dictionary [ADNIGO,2]"
+Biospecimen,Biospecimen Results,"ADMC Duke p180 Ultra Performance Liquid Chromatography [ADNIGO,2]"
+Biospecimen,Biospecimen Results,"ADMC M2OVE-AD ADNIGO-2 Bile Acids Dictionary[ADNIGO,2]"
+Biospecimen,Biospecimen Results,"ADMC M2OVE-AD ADNIGO-2 Bile Acids[ADNIGO,2]"
+Biospecimen,Biospecimen Results,ADMC Metabolomic Analysis by Gas chromatography time of flight mass spectrometry (GCTOF) Data Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,ADMC Metabolomic Analysis by Gas chromatography time of flight mass spectrometry (GCTOF) Data [ADNI1]
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylcholine, Lysophosphatidylcholine Flow Injection Negative Ionization LC-MS/MS Internal Std Ratios"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylcholine, Lysophosphatidylcholine Flow Injection Negative Ionization LC-MS/MS Internal Std Ratios Dictionary"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylcholine, Lysophosphatidylcholine, Sphingomyeline Flow Injection Positive Ionization LC-MS/MS Internal Standard Ratios"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylcholine, Lysophosphatidylcholine, Sphingomyeline Flow Injection Positive Ionization LC-MS/MS Internal Standard Ratios Dictionary"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylethanolamine, Plasmenylethanolamine Flow Injection LC-MS/MS Internal Std Ratios"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylethanolamine, Plasmenylethanolamine Flow Injection LC-MS/MS Internal Std Ratios Dictionary"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylethanolamine, Plasmenylethanolamine Flow Injection LC-MS/MS Peak Heights Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"ADMC Phenomenome Phosphatidylethanolamine, Plasmenylethanolamine Flow Injection LC-MS/MS Peak Heights [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,ADMC Targeted UHPLC-MS analysis of High-Value Metabolites in Serum Samples Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,ADMC Targeted UHPLC-MS analysis of High-Value Metabolites in Serum Samples [ADNI1]
+Biospecimen,Biospecimen Results,ADNI Biomarker Core Laboratory. Baseline Isoprostanes Data Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,ADNI Biomarker Core Laboratory. Baseline Isoprostanes Data [ADNI1]
+Biospecimen,Biospecimen Results,"ApoE – Results Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"ApoE – Results [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"Araclon Biotech S.L. AB test40 and 42 Plasma Analysis Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"Araclon Biotech S.L. AB test40 and 42 Plasma Analysis [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"Biomarker Samples [ADNI1,GO,2,3]"
+Biospecimen,Biospecimen Results,Biomarkers Consortium CSF Proteomics MRM Data Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,Biomarkers Consortium CSF Proteomics MRM Data [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab – CSF NFL Dictionary [ADNI 1]
+Biospecimen,Biospecimen Results,Blennow Lab – CSF NFL [ADNI 1]
+Biospecimen,Biospecimen Results,Blennow Lab – CSF Ng Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab – CSF Ng [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab – Plasma Tau Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab – Plasma Tau [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab ADNI1 Plasma neurofilament light (NFL) Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,Blennow Lab ADNI1 Plasma neurofilament light (NFL) [ADNI1]
+Biospecimen,Biospecimen Results,"CSF – Local Lab Results [ADNI1,GO,2,3]"
+Biospecimen,Biospecimen Results,"CSF Hemoglobin ELISA and PS129 Luminex Assays (Zhang Lab, University of Washington) Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"CSF Hemoglobin ELISA and PS129 Luminex Assays (Zhang Lab, University of Washington) [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,DDE Analysis Summary Dictionary [ADNI 1]
+Biospecimen,Biospecimen Results,DDE Analysis Summary [ADNI 1]
+Biospecimen,Biospecimen Results,"Fagan Lab – CSF Visinin-like Protein-1 (VILIP-1) Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"Fagan Lab – CSF Visinin-like Protein-1 (VILIP-1) [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"Homocysteine – Results [ADNI1,GO]"
+Biospecimen,Biospecimen Results,Redox Reactive Autoantibodies Data Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,Redox Reactive Autoantibodies [ADNI1]
+Biospecimen,Biospecimen Results,"UPENN – 2D-UPLC tandem mass spectrometry measurement of Abeta42, Abeta40 and Abeta38 Dictionary [ADNI1]"
+Biospecimen,Biospecimen Results,"UPENN – 2D-UPLC tandem mass spectrometry measurement of Abeta42, Abeta40 and Abeta38 [ADNI1]"
+Biospecimen,Biospecimen Results,UPENN – Fourth Batch Analyses of CSF Biomarkers Dictionary [ADNI GO/2]
+Biospecimen,Biospecimen Results,UPENN – Fourth Batch Analyses of CSF Biomarkers [ADNI GO/2]
+Biospecimen,Biospecimen Results,UPENN – Plasma Biomarker Data Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,UPENN – Plasma Biomarker Data [ADNI1]
+Biospecimen,Biospecimen Results,"UPENN CSF Biomarker Master Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"UPENN CSF Biomarker Master [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"UPENN CSF Biomarkers Elecsys Dictionary [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,"UPENN CSF Biomarkers Elecsys [ADNI1,GO,2]"
+Biospecimen,Biospecimen Results,UW – CSF Alpha-synuclein Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,UW – CSF Alpha-synuclein [ADNI1]
+Biospecimen,Biospecimen Results,UW – CSF Complement 3 & Factor H Dictionary [ADNI1]
+Biospecimen,Biospecimen Results,UW – CSF Complement 3 & Factor H [ADNI1]
+Biospecimen,Lab Collection Procedures,"ApoE Genotyping – Draw Data [ADNI1,GO]"
+Biospecimen,Lab Collection Procedures,"Clinical Laboratory Tests [ADNI1,GO,2,3]"
+Biospecimen,Lab Collection Procedures,"Genetic Sample Collection [ADNI2,3]"
+Biospecimen,Lab Collection Procedures,"Laboratory Data [ADNI1,GO]"
+Biospecimen,Lab Collection Procedures,"Method of CSF Collection [ADNI1,GO]"
+Enrollment,Enrollment,"Additional Comments [ADNI1,GO,2,3]"
+Enrollment,Enrollment,ADNI 2 Visit Codes Lookup [ADNI2]
+Enrollment,Enrollment,"Arm [ADNI1,GO,2]"
+Enrollment,Enrollment,Clinician Verification [ADNI3]
+Enrollment,Enrollment,"Clinician Verification [ADNIGO,2]"
+Enrollment,Enrollment,"Early Discontinuation and Withdrawal [ADNI1,GO,2]"
+Enrollment,Enrollment,Exclusion Criteria [ADNI1]
+Enrollment,Enrollment,Inclusion Criteria [ADNI1]
+Enrollment,Enrollment,"Neuropathology Status [ADNI2,3]"
+Enrollment,Enrollment,"Registry [ADNI1,GO,2,3]"
+Enrollment,Enrollment,"Roster [ADNI1,GO,2,3]"
+Enrollment,Enrollment,"Visits [ADNI1,GO,2,3]"
+Genetic,Genotype Results,TOMM40 PolyT Variant Data [ADNI1]
+Imaging,MR Image Acquisition,"1.5T MRI Scan Information [ADNI1,GO,2,3]"
+Imaging,MR Image Acquisition,"3T MRI Scan Information [ADNI1,GO,2,3]"
+Imaging,MR Image Acquisition,"MP-RAGE Metadata Listing [ADNI1,GO,2]"
+Imaging,MR Image Acquisition,MRI B1 Calibration [ADNI1]
+Imaging,MR Image Acquisition,MRI Clinical Read [ADNI1]
+Imaging,MR Image Acquisition,"MRI Phantom [ADNI1,GO,2]"
+Imaging,MR Image Acquisition,"MRI Protocol [ADNI1,GO,2]"
+Imaging,MR Image Acquisition,"MRI Scan Metadata Listing [ADNI1,GO,2]"
+Imaging,MR Image Acquisition,"MRI Serial [ADNI1,GO,2]"
+Imaging,MR Image Acquisition,"MRI Subject Inclusion [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"BAI – MRI NMRC Summaries Dictionary [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"BAI – MRI NMRC Summaries [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"Fox Lab – BSI Measures Dictionary [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"Fox Lab – BSI Measures [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"Mayo (Jack Lab) – Default Mode Network Connectivity Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"Mayo (Jack Lab) – Default Mode Network Connectivity [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"Mayo (Jack Lab) – TBM-SyN Based Scores Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"Mayo (Jack Lab) – TBM-SyN Based Scores [ADNIGO,2]"
+Imaging,MR Image Analysis,"MRI Infarcts Dictionary [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"MRI Infarcts [ADNI1,GO,2]"
+Imaging,MR Image Analysis,UA – MRI SPM Voxel Based Morphometry (VBM) Analysis Dictionary [ADNI1]
+Imaging,MR Image Analysis,UA – MRI SPM Voxel Based Morphometry (VBM) Analysis [ADNI1]
+Imaging,MR Image Analysis,UCD – Total Cranial Vault Segmentation Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCD – Total Cranial Vault Segmentation [ADNI1]
+Imaging,MR Image Analysis,UCD – White Matter Hyperintensity Volumes Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCD – White Matter Hyperintensity Volumes Dictionary [ADNI2]
+Imaging,MR Image Analysis,UCD – White Matter Hyperintensity Volumes [ADNI1]
+Imaging,MR Image Analysis,UCD- White Matter Hyperintensity Volumes [ADNI2]
+Imaging,MR Image Analysis,UCL – Boundary Shift Integral Summaries Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCL – Boundary Shift Integral Summaries [ADNI1]
+Imaging,MR Image Analysis,"UCLA – DTI ROI Summary Measures Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"UCLA – DTI ROI Summary Measures [ADNIGO,2]"
+Imaging,MR Image Analysis,UCSD – Derived Volumes Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCSD – Derived Volumes [ADNI1]
+Imaging,MR Image Analysis,UCSF – ADNI-1 3T Cross-Sectional FreeSurfer (5.1) Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCSF – ADNI-1 3T Cross-Sectional FreeSurfer (5.1) [ADNI1]
+Imaging,MR Image Analysis,"UCSF – ASL Perfusion CBF by FreeSurfer ROI Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"UCSF – ASL Perfusion CBF by FreeSurfer ROI [ADNIGO,2]"
+Imaging,MR Image Analysis,"UCSF – Cross-Sectional FreeSurfer (5.1) Dictionary [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"UCSF – Cross-Sectional FreeSurfer (5.1) [ADNI1,GO,2]"
+Imaging,MR Image Analysis,UCSF – Cross-Sectional FreeSurfer (FreeSurfer Version 4.3) Dictionary [ADNI1]
+Imaging,MR Image Analysis,"UCSF – Cross-Sectional FreeSurfer (FreeSurfer Version 4.3) [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"UCSF – Longitudinal FreeSurfer (5.1) – All Available Base Image Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"UCSF – Longitudinal FreeSurfer (5.1) – All Available Base Image [ADNIGO,2]"
+Imaging,MR Image Analysis,UCSF – Longitudinal FreeSurfer (FreeSurfer Version 4.4) Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCSF – Longitudinal FreeSurfer (FreeSurfer Version 4.4) [ADNI1]
+Imaging,MR Image Analysis,"UCSF – Longitudinal FreeSurfer (FreeSurfer Version 5.1) – Year 1 Base Image Dictionary [ADNIGO,2]"
+Imaging,MR Image Analysis,"UCSF – Longitudinal FreeSurfer (FreeSurfer Version 5.1) – Year 1 Base Image [ADNIGO,2]"
+Imaging,MR Image Analysis,UCSF – Regional Atrophy Rates Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCSF – Regional Atrophy Rates [ADNI1]
+Imaging,MR Image Analysis,UCSF – SNT Hippocampal Volumes Dictionary [ADNI1]
+Imaging,MR Image Analysis,UCSF – SNT Hippocampal Volumes [ADNI1]
+Imaging,MR Image Analysis,University of Pennsylvania Section of Biomedical Image Analysis (SBIA) Volumes Dictionary [ADNI1]
+Imaging,MR Image Analysis,UPENN – Hierarchical Parcellation of MRI Using Multi-atlas Labeling Methods Dictionary [ADNI1]
+Imaging,MR Image Analysis,UPENN – Hierarchical Parcellation of MRI Using Multi-atlas Labeling Methods [ADNI1]
+Imaging,MR Image Analysis,UPENN – Spatial Pattern of Abnormalities for Recognition of Early AD (SPARE-AD) Dictionary [ADNI1]
+Imaging,MR Image Analysis,UPENN – Spatial Pattern of Abnormalities for Recognition of Early AD (SPARE-AD) [ADNI1]
+Imaging,MR Image Analysis,UPENN – Spatial Pattern of Abnormalities for Recognition of Early MCI to AD conversion (SPARE-MCI) Dictionary [ADNI1]
+Imaging,MR Image Analysis,UPENN – Spatial Pattern of Abnormalities for Recognition of Early MCI to AD conversion (SPARE-MCI) [ADNI1]
+Imaging,MR Image Analysis,"USC – Tensor-based Morphometry Versions 2.0 and 2.1 Dictionary [ADNI1,GO,2]"
+Imaging,MR Image Analysis,"USC – Tensor-based Morphometry Versions 2.0 and 2.1 [ADNI1,GO,2]"
+Imaging,MR Image Quality,"Listing of Changed LONI Study IDs [ADNI1,GO,2]"
+Imaging,MR Image Quality,"Mayo (Jack Lab) – ADNI GO/2 MRI QC Dictionary [ADNIGO,2]"
+Imaging,MR Image Quality,"Mayo (Jack Lab) – ADNI GO/2 MRI QC [ADNIGO,2]"
+Imaging,MR Image Quality,"Mayo (Jack Lab) – ADNI MRI MCH Dictionary [ADNI1,GO,2,3]"
+Imaging,MR Image Quality,"Mayo (Jack Lab) – ADNI MRI MCH [ADNI1,GO,2,3]"
+Imaging,MR Image Quality,"MRI MPRAGE Process [ADNI1,GO,2]"
+Imaging,MR Image Quality,"MRI MPRAGE Ranking [ADNI1,GO,2]"
+Imaging,MR Image Quality,"MRI Quality [ADNI1,GO,2]"
+Imaging,MR Image Quality,"UCSF – ASL Perfusion Raw QC Dictionary [ADNIGO,2]"
+Imaging,MR Image Quality,"UCSF – ASL Perfusion Raw QC [ADNIGO,2]"
+Imaging,PET Image Acquisition,Amyloid PET Scan Information [ADNI3]
+Imaging,PET Image Acquisition,"AV-45 PET Scan Information [ADNIGO,2]"
+Imaging,PET Image Acquisition,FDG PET Scan Information [ADNI1]
+Imaging,PET Image Acquisition,FDG PET Scan Information [ADNI3]
+Imaging,PET Image Acquisition,"FDG PET Scan Information [ADNIGO,2]"
+Imaging,PET Image Acquisition,"PET Metadata Listing [ADNI1,GO,2]"
+Imaging,PET Image Acquisition,PIB Scan Information [ADNI1]
+Imaging,PET Image Acquisition,Tau AV-1451 PET Eligibility [ADNI2]
+Imaging,PET Image Acquisition,Tau AV-1451 PET Scan Information [ADNI2]
+Imaging,PET Image Acquisition,Tau AV-1451 PET Scan Information [ADNI3]
+Imaging,PET Image Analysis,BAI – NMRC Summaries Dictionary [ADNI1]
+Imaging,PET Image Analysis,BAI – NMRC Summaries [ADNI1]
+Imaging,PET Image Analysis,"BAI – PET NMRC Summaries Dictionary [ADNI1,GO,2,3]"
+Imaging,PET Image Analysis,"BAI – PET NMRC Summaries [ADNI1,GO,2,3]"
+Imaging,PET Image Analysis,Cross-Validation Dictionary [ADNI1]
+Imaging,PET Image Analysis,Cross-Validation [ADNI1]
+Imaging,PET Image Analysis,NYU FDG-PET Hippocampus (pons normalized) Dictionary [ADNI1]
+Imaging,PET Image Analysis,NYU FDG-PET Hippocampus (pons normalized) [ADNI1]
+Imaging,PET Image Analysis,"sPAP Avid ADNI Florbetapir Summaries Dictionary [ADNIGO,2]"
+Imaging,PET Image Analysis,"sPAP Avid ADNI Florbetapir Summaries [ADNIGO,2]"
+Imaging,PET Image Analysis,UC Berkeley – AV1451 Analysis Dictionary [ADNI2]
+Imaging,PET Image Analysis,"UC Berkeley – AV1451 analysis [ADNI1,GO,2,3]"
+Imaging,PET Image Analysis,"UC Berkeley – AV45 Analysis Dictionary [ADNIGO,2]"
+Imaging,PET Image Analysis,"UC Berkeley – AV45 Analysis [ADNI1,GO,2,3]"
+Imaging,PET Image Analysis,"UC Berkeley – FDG Analysis Dictionary [ADNI1,GO,2]"
+Imaging,PET Image Analysis,"UC Berkeley – FDG Analysis [ADNI1,GO,2]"
+Imaging,PET Image Analysis,UC Berkeley – Partial Volume AV1451 Analysis Dictionary [ADNI2]
+Imaging,PET Image Analysis,"UC Berkeley – Partial Volume Corrected AV1451 Analyses [ADNI1,GO,2,3]"
+Imaging,PET Image Analysis,UPitt – PIB PET Analysis Dictionary [ADNI1]
+Imaging,PET Image Analysis,UPitt – PIB PET Analysis [ADNI1]
+Imaging,PET Image Analysis,"UU – PET Analysis (Norman Foster) Dictionary [ADNI1,GO,2]"
+Imaging,PET Image Analysis,"UU – PET Analysis (Norman Foster) [ADNI1,GO,2]"
+Imaging,PET Image Quality,Amyloid PET QC [ADNI3]
+Imaging,PET Image Quality,"AV-45 PET QC Tracking [ADNIGO,2]"
+Imaging,PET Image Quality,FDG PET QC [ADNI3]
+Imaging,PET Image Quality,"PET QC Tracking [ADNI1,GO,2]"
+Imaging,PET Image Quality,PIB QC Tracking [ADNI1]
+Imaging,PET Image Quality,Tau AV-1451 PET QC [ADNI2]
+Imaging,PET Image Quality,Tau AV-1451 PET QC [ADNI3]
+Medical History,Adverse Events,Adverse Events Log [ADNI3]
+Medical History,Adverse Events,"Adverse Events/ Hospitalizations [ADNI1,GO,2]"
+Medical History,Adverse Events,"AV-45 24-48 Hour Follow-Up [ADNIGO,2]"
+Medical History,Drugs,"Concurrent Medications Log [ADNI1,GO,2,3]"
+Medical History,Drugs,"Key Background Medications [ADNIGO,2,3]"
+Medical History,Medical History,"Documentation of Baseline Symptoms Log [ADNI1,GO,2]"
+Medical History,Medical History,Initial Health Assessment [ADNI3]
+Medical History,Medical History,"Medical History [ADNI1,GO,2]"
+Medical History,Medical History,"Recent Medical History Details Log [ADNI1,GO,2]"
+Medical History,Physical/Neurological Exams,"AV-45 Pre and Post Injection Vitals [ADNIGO,2]"
+Medical History,Physical/Neurological Exams,"Baseline Symptoms Checklist [ADNI1,GO,2]"
+Medical History,Physical/Neurological Exams,ECG [ADNI2]
+Medical History,Physical/Neurological Exams,"NACC Neuropathology Data Form Dictionary [ADNI1,GO,2]"
+Medical History,Physical/Neurological Exams,"NACC Neuropathology Data Form [ADNI1,GO,2]"
+Medical History,Physical/Neurological Exams,"Neurological Exam [ADNI1,GO,2,3]"
+Medical History,Physical/Neurological Exams,"Physical Exam [ADNI1,GO,2,3]"
+Medical History,Physical/Neurological Exams,"Vital Signs [ADNI1,GO,2,3]"
+Study Info,Data & Database,"Data Dictionary [ADNI1,GO,2,3]"
+Study Info,Data & Database,Key ADNI tables merged into one table
+Study Info,Data & Database,Key ADNI tables merged into one table – Dictionary
+Study Info,Data & Database,"Return of Research Results [ADNI2,3]"
+Subject Characteristics,Family History,Family History – Parents [ADNI3]
+Subject Characteristics,Family History,Family History – Sibling Log [ADNI3]
+Subject Characteristics,Family History,"Family History Questionnaire Subtable [ADNI1,GO,2]"
+Subject Characteristics,Family History,"Family History Questionnaire [ADNI1,GO,2]"
+Subject Characteristics,Subject Demographics,"Subject Demographics [ADNI1,GO,2,3]"
