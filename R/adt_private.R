@@ -372,7 +372,13 @@ a_select_bmk <- function(visit, dat, win, window_overlap) {
     res <- dat %>% 
         left_join(dat_visit, by = "subject_id") %>% 
         filter(date >= date_left & date < date_right) %>% 
-        select(-c(date_left, date_right))
+        mutate(date_diff = abs(impute_date - date)) %>% 
+        group_by(subject_id, impute_date) %>% 
+        arrange(date_diff, .by_group = T) %>% 
+        filter(row_number()==1) %>% 
+        select(-c(date_left, date_right, date_diff)) %>% 
+        ungroup()
+        
     
     return(res)
 }
