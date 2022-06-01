@@ -6,7 +6,6 @@
 #'
 #' @importFrom grDevices colors
 #' @importFrom graphics axis box legend lines par plot points text arrows grid rect
-#' @importFrom parallel detectCores
 #' @importFrom readxl read_xlsx
 #' @importFrom gdata read.xls
 #' @importFrom gridExtra tableGrob grid.arrange
@@ -231,7 +230,7 @@ NULL
 #'
 #' @param pattern A string indicating the pattern of all the data files. Default
 #'     is "*.xls" (should work for both .xls and .xlsx). This pattern is used to
-#'     read all table names from the path.
+#'     read all table names from the path. It can also be other file formats, such as ".csv".
 #'
 #' @param src_files Updated dictionary file for source file features. See
 #'     \code{\link{dict_src_files}} for more details.

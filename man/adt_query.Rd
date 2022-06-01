@@ -4,11 +4,9 @@
 \alias{adt_query}
 \title{Search description from dictionary}
 \usage{
-adt_query(biocard, var, opt = c("general", "variable", "sources"))
+adt_query(var, opt = c("general", "variable", "sources"))
 }
 \arguments{
-\item{biocard}{the object}
-
 \item{var}{The variable name to query}
 
 \item{opt}{Searching options}
@@ -21,7 +19,7 @@ Search description from dictionary
 }
 \examples{
 \dontrun{
-adt_query(biovard, "EDUC", "general")
+adt_query("EDUC", "general")
 }
 
 }

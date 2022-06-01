@@ -22,6 +22,8 @@ default dictionary is appended in the package. Since the parameters in
 tables may vary, it could be modified by using a costomized parameter
 dictionary. The format can refer to the appended dictionary.
 See \code{\link{dict_src_files}} for more details.}
+
+\item{verbose}{A logical value indicating weather printing out process information.}
 }
 \value{
 A dataset

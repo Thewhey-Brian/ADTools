@@ -6,7 +6,8 @@
 \usage{
 adt_apoe(
   apoecode,
-  par_apoe = list(levels = c(3.4, 4.4, 2.4), labels = c(1, 2, NA))
+  par_apoe = list(levels = c(3.4, 4.4, 2.4), labels = c(1, 2, NA)),
+  ...
 )
 }
 \arguments{
@@ -15,6 +16,8 @@ options are: 3.4, 4.4, 2.4}
 
 \item{par_apoe}{A list indicating the map for apoecode. Default
 value is list(levels = c(3.4, 4.4, 2.4),labels = c(1, 2, NA))).}
+
+\item{...}{}
 }
 \description{
 Convert APOE values from (3.4, 4.4, 2.4) to (1, 2, NA).

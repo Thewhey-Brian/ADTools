@@ -388,6 +388,7 @@ a_select_bmk <- function(visit, dat, win, window_overlap) {
 #'
 #' @param dat The analysis dataset.
 #' @param var The continuous variables in analysis dataset.
+#' @param n The number of categories. 
 #'
 #' @return
 #' @export

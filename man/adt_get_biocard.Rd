@@ -6,14 +6,12 @@
 \usage{
 adt_get_biocard(
   path = ".",
-  merge_by = c("cognitive", "diagnosis", "csf", "hippocampus", "amygdala",
-    "entorhinal"),
-  window = 730,
-  window_overlap = FALSE,
+  reference_time = NULL,
+  window_setting = NULL,
   pattern = "*.xls",
   src_files = NULL,
   src_tables = NULL,
-  par_apoe = list(levels = c(3.4, 4.4, 2.4), labels = c(1, 2, NA)),
+  ...,
   verbose = TRUE
 )
 }
@@ -21,36 +19,33 @@ adt_get_biocard(
 \item{path}{Directory of the BIOCARD data files. Default value is the working
 directory,}
 
-\item{merge_by}{A character string indicating the source baseline time for
-aligning the BIOCARD data when merging multiple files. Options include
-"diagnosis", "cognitive", "csf", "hippocampus", "amydata" and
-"entorhinal".}
+\item{reference_time}{A data frame contains patients' ID and corresponding 
+reference time for each patient. The cognitive time is set to be the 
+default reference time.}
 
-\item{window}{An integer (unit of days) indicating the maximum acceptable gap
-time for merging a biomarker test to base data. Default is 730 days. For
-most data, the time windows are calculated from the baseline time (left
-window = the midpoint between current and the previous time point; right
+\item{window_setting}{A list contains a integer (unit of days) indicating the maximum 
+acceptable gap time for merging each biomarker test to base data and a logical 
+value indicating whether the time window should overlap. The default value is 730
+days and FALSE. For most data, the time windows are calculated from the baseline 
+time (left window = the midpoint between current and the previous time point; right
 window = the midpoint between current and the next time point). If the
 time windows are longer than the maximum acceptable length, then force to
 select biomarkers within the maximum window length we set. For the first
 and last baseline time, since there is no "previous" or "next" time point
-available, use the maximum acceptable window length instead.}
-
-\item{window_overlap}{A logical value indicating the time window setting.
-Default "False." If true, all time windows will set from 1/2 "window"
+available, use the maximum acceptable window length instead. For the overlap setting,
+ff TRUE, all time windows will set from 1/2 "window"
 days before the baseline time to the 1/2 "window" days after baseline. In
 this case, the time windows may overlap, which means some biomarkers may
-be merged into multiple baseline data. If false, the windows will be
+be merged into multiple baseline data. If FALSE, the windows will be
 calculated from the baseline times. The left window is set to be the
 midpoint between the current and the previous time point. The right
 window is set to be the midpoint between the current and the next time
 point. For the first and last baseline time, since there is no "previous"
-or "next" time point available, use the maximum acceptable window length
-(set by the parameter "window") instead.}
+or "next" time point available, use the maximum acceptable window length instead.}
 
 \item{pattern}{A string indicating the pattern of all the data files. Default
 is "*.xls" (should work for both .xls and .xlsx). This pattern is used to
-read all table names from the path.}
+read all table names from the path. It can also be other file formats, such as ".csv".}
 
 \item{src_files}{Updated dictionary file for source file features. See
 \code{\link{dict_src_files}} for more details.}
@@ -58,8 +53,9 @@ read all table names from the path.}
 \item{src_tables}{Updated dictionary file for source table features. See
 \code{\link{dict_src_tables}} for more details.}
 
-\item{par_apoe}{A list indicating the map for apoecode. Default
-value is list(levels = c(3.4, 4.4, 2.4),labels = c(1, 2, NA))).}
+\item{...}{}
+
+\item{verbose}{A logical value indicating weather printing out process information.}
 }
 \value{
 Returned the analysis dataset with: patients' ids, baseline times,

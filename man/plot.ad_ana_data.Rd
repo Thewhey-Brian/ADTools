@@ -4,13 +4,7 @@
 \alias{plot.ad_ana_data}
 \title{Plot for class ad_ana_data}
 \usage{
-\method{plot}{ad_ana_data}(
-  dat,
-  distn = c("age", "visit", "year"),
-  group = c("diagnosis", "sex"),
-  baseline = TRUE,
-  ...
-)
+\method{plot}{ad_ana_data}(dat, distn, group, baseline = TRUE, ...)
 }
 \arguments{
 \item{dat}{The baseline time dataset.}
