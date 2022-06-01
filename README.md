@@ -45,7 +45,7 @@ adt_get_dict("src_files")
 ```
 and change the keywords. Then pass it to the merging function:
 ```R
-dt_biocard = get_biocard(path, src_tables = "dict_src_tables.xlsx")
+dt_biocard = adt_get_biocard(path, src_tables = "dict_src_tables.xlsx")
 ```
 
 ### Merging
