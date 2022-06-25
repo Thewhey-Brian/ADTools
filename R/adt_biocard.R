@@ -12,15 +12,14 @@
 #' @examples
 #' \dontrun{
 #' ## with default unoverlaped window
-#' dt_biocard <- get_biocard(path, merge_by = "diagnosis")
+#' dt_biocard <- get_biocard(path)
 #'
 #' ## with costomized window
-#' dt_biocard <- get_biocard(path, merge_by = "diagnosis",
-#'                           window = 365,
-#'                           window_overlap = TRUE)
+#' dt_biocard <- get_biocard(path,
+#'                           window_setting = window_Set)
 #'
 #' ## with dictionary provided by user
-#' dt_biocard <- get_biocard(path, merge_by = "dx",
+#' dt_biocard <- get_biocard(path,
 #'                           src_tables = "dict_src_tables.xlsx")
 #' }
 #'
@@ -28,7 +27,7 @@
 #'
 #'
 adt_get_biocard <- function(path     = ".",
-                            reference_time = NULL,
+                            reference_time = NULL, 
                             window_setting = NULL, 
                             pattern    = "*.xls",
                             src_files  = NULL,
@@ -218,6 +217,12 @@ adt_get_biocard <- function(path     = ".",
     
     if (is.null(reference_time)) {
         reference_time <- s_cog %>% select(subject_id, date)
+    }
+    if (reference_time == "COG") {
+      reference_time <- s_cog %>% select(subject_id, date)
+    }
+    if (reference_time == "DIAG") {
+      reference_time <- s_diag %>% select(subject_id, date)
     }
 
     ## ------------- combine data --------------------------------------
