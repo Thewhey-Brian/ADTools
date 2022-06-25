@@ -9,7 +9,8 @@ directory,}
 
 \item{reference_time}{A data frame contains patients' ID and corresponding 
 reference time for each patient. The cognitive time is set to be the 
-default reference time.}
+default reference time (if NULL). Use can also specify reference time used. For example, 
+"COG" represents the cognitive time, and "DIAG" represent the diagnosis time.}
 
 \item{window_setting}{A list contains a integer (unit of days) indicating the maximum 
 acceptable gap time for merging each biomarker test to base data and a logical 

@@ -21,7 +21,8 @@ directory,}
 
 \item{reference_time}{A data frame contains patients' ID and corresponding 
 reference time for each patient. The cognitive time is set to be the 
-default reference time.}
+default reference time (if NULL). Use can also specify reference time used. For example, 
+"COG" represents the cognitive time, and "DIAG" represent the diagnosis time.}
 
 \item{window_setting}{A list contains a integer (unit of days) indicating the maximum 
 acceptable gap time for merging each biomarker test to base data and a logical 
@@ -67,15 +68,14 @@ Import BIOCARD data from source files and generate the analysis dataset.
 \examples{
 \dontrun{
 ## with default unoverlaped window
-dt_biocard <- get_biocard(path, merge_by = "diagnosis")
+dt_biocard <- get_biocard(path)
 
 ## with costomized window
-dt_biocard <- get_biocard(path, merge_by = "diagnosis",
-                          window = 365,
-                          window_overlap = TRUE)
+dt_biocard <- get_biocard(path,
+                          window_setting = window_Set)
 
 ## with dictionary provided by user
-dt_biocard <- get_biocard(path, merge_by = "dx",
+dt_biocard <- get_biocard(path,
                           src_tables = "dict_src_tables.xlsx")
 }
 
